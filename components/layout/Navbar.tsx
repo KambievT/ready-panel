@@ -14,7 +14,7 @@ const NAV_LINKS = [
 
 export function Navbar() {
   return (
-    <nav className="bg-[#F7F8FA] border-b border-[#E2E8F0]">
+    <nav className="hidden lg:block bg-[#F7F8FA] border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-6">
         <ul className="flex items-center gap-0">
           {NAV_LINKS.map((link) => (

@@ -1,5 +1,8 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { MapPin, Download, Phone } from "lucide-react";
+import { MapPin, Download, Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const SOCIAL_LINKS = [
@@ -35,10 +38,36 @@ const SOCIAL_LINKS = [
   },
 ];
 
+const NAV_LINKS = [
+  { label: "Главная", href: "/" },
+  { label: "Топ продаж", href: "/top" },
+  { label: "Каталог", href: "/catalog" },
+  { label: "Падел для бизнеса", href: "/business" },
+  { label: "Стоимость услуг", href: "/pricing" },
+  { label: "Процесс", href: "/process" },
+  { label: "О компании", href: "/about" },
+  { label: "Блог", href: "/blog" },
+  { label: "Контакты", href: "/contacts" },
+];
+
 export function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   return (
     <header className="bg-[#0B1422] text-white border-b border-white/5">
-      <div className="max-w-7xl  flex items-center gap-8 px-6 h-18">
+      {/* ── Desktop header ── */}
+      <div className="max-w-7xl hidden lg:flex items-center gap-8 px-6 h-18">
         {/* Logo */}
         <Link href="/" className="shrink-0 select-none">
           <span className="text-[22px] font-extrabold italic tracking-tight">
@@ -126,6 +155,138 @@ export function Header() {
           Заказать звонок
         </Button>
       </div>
+
+      {/* ── Mobile header ── */}
+      <div className="flex lg:hidden items-center justify-between px-4 h-14">
+        {/* Logo */}
+        <Link href="/" className="shrink-0 select-none">
+          <span className="text-[20px] font-extrabold italic tracking-tight">
+            <span className="text-[#F5A41F]">READY</span>
+            <span className="text-[#1B54B4]"> PADEL</span>
+          </span>
+        </Link>
+
+        <div className="flex items-center gap-3">
+          {/* Phone shortcut */}
+          <a
+            href="tel:+79180742375"
+            className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center"
+            aria-label="Позвонить"
+          >
+            <Phone className="w-5 h-5 text-[#F5A41F]" />
+          </a>
+
+          {/* Burger */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center"
+            aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
+          >
+            {menuOpen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* ── Mobile menu overlay ── */}
+      {menuOpen && (
+        <div className="lg:hidden fixed inset-0 top-14 z-50 bg-[#0B1422] overflow-y-auto">
+          <div className="px-4 py-6 space-y-6">
+            {/* Nav links */}
+            <nav>
+              <ul className="space-y-1">
+                {NAV_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="block px-4 py-3 text-[15px] font-semibold uppercase tracking-wide text-white/80 hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-150"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Divider */}
+            <div className="h-px bg-white/10" />
+
+            {/* Phone */}
+            <div className="flex items-center gap-3 px-4">
+              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
+                <Phone className="w-5 h-5 text-[#F5A41F]" />
+              </div>
+              <div className="leading-tight">
+                <p className="text-white/50 text-[11px] uppercase tracking-widest">
+                  Пн–Пт: 9:00–19:00
+                </p>
+                <a
+                  href="tel:+79180742375"
+                  className="text-white font-bold text-[17px] tracking-wide"
+                >
+                  +7 (918) 074-23-75
+                </a>
+              </div>
+            </div>
+
+            {/* Address */}
+            <div className="flex items-center gap-3 px-4">
+              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
+                <MapPin className="w-5 h-5 text-[#F5A41F]" />
+              </div>
+              <div className="leading-tight">
+                <p className="text-white/50 text-[11px] uppercase tracking-widest mb-0.5">
+                  Адрес
+                </p>
+                <p className="text-white text-[14px] font-medium">
+                  г. Тольятти, ул. Коммунальная улица 20с7,
+                </p>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="h-px bg-white/10" />
+
+            {/* Messengers */}
+            <div className="flex items-center gap-3 px-4">
+              <span className="text-[11px] text-white/40 uppercase tracking-widest">
+                Онлайн
+              </span>
+              <div className="flex items-center gap-2">
+                {SOCIAL_LINKS.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    aria-label={link.label}
+                    style={{ backgroundColor: link.color }}
+                    className="w-10 h-10 rounded-xl flex items-center justify-center"
+                  >
+                    {link.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="space-y-3 px-4">
+              <Button className="w-full bg-[#1B54B4] hover:bg-[#1648a0] text-white font-semibold rounded-xl h-12 text-[14px] gap-2 shadow-none">
+                <Download className="w-4 h-4 shrink-0" />
+                Скачать каталог с ценами
+              </Button>
+              <Button
+                variant="outline"
+                className="w-full border-[#1B54B4]/60 bg-transparent text-white hover:bg-[#1B54B4]/15 hover:text-white hover:border-[#1B54B4] rounded-xl h-12 text-[14px] shadow-none"
+              >
+                Заказать звонок
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
