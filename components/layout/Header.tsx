@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
-import { MapPin, Download, Phone, Menu, X } from "lucide-react";
+import { MapPin, Download, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const SOCIAL_LINKS = [
@@ -52,13 +52,29 @@ const NAV_LINKS = [
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openMenu = useCallback(() => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setMenuOpen(true);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setMenuVisible(true));
+    });
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setMenuVisible(false);
+    closeTimer.current = setTimeout(() => setMenuOpen(false), 350);
+  }, []);
+
+  const toggleMenu = useCallback(() => {
+    if (menuOpen && menuVisible) closeMenu();
+    else openMenu();
+  }, [menuOpen, menuVisible, openMenu, closeMenu]);
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -164,111 +180,198 @@ export function Header() {
 
           {/* Burger */}
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center"
+            onClick={toggleMenu}
+            className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center relative"
             aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
           >
-            {menuOpen ? (
-              <X className="w-5 h-5" />
-            ) : (
-              <Menu className="w-5 h-5" />
-            )}
+            <div className="w-5 h-5 relative flex flex-col items-center justify-center">
+              <span
+                className={`block absolute h-0.5 w-5 bg-white rounded-full transition-all duration-300 ease-out ${
+                  menuVisible ? "rotate-45 translate-y-0" : "-translate-y-1.5"
+                }`}
+              />
+              <span
+                className={`block absolute h-0.5 w-5 bg-white rounded-full transition-all duration-300 ease-out ${
+                  menuVisible
+                    ? "opacity-0 scale-x-0"
+                    : "opacity-100 scale-x-100"
+                }`}
+              />
+              <span
+                className={`block absolute h-0.5 w-5 bg-white rounded-full transition-all duration-300 ease-out ${
+                  menuVisible ? "-rotate-45 translate-y-0" : "translate-y-1.5"
+                }`}
+              />
+            </div>
           </button>
         </div>
       </div>
 
       {/* ── Mobile menu overlay ── */}
       {menuOpen && (
-        <div className="lg:hidden fixed inset-0 top-14 z-50 bg-[#0B1422] overflow-y-auto">
-          <div className="px-4 py-6 space-y-6">
-            {/* Nav links */}
-            <nav>
-              <ul className="space-y-1">
-                {NAV_LINKS.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      onClick={() => setMenuOpen(false)}
-                      className="block px-4 py-3 text-[15px] font-semibold uppercase tracking-wide text-white/80 hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-150"
+        <div className="lg:hidden fixed inset-0 top-14 z-50">
+          {/* Backdrop */}
+          <div
+            className={`absolute inset-0 bg-[#0B1422]/95 backdrop-blur-sm transition-opacity duration-300 ${
+              menuVisible ? "opacity-100" : "opacity-0"
+            }`}
+            onClick={closeMenu}
+          />
+
+          {/* Panel */}
+          <div
+            className={`relative h-full overflow-y-auto transition-all duration-350 ease-out ${
+              menuVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 -translate-y-4"
+            }`}
+          >
+            <div className="px-4 py-6 space-y-6">
+              {/* Nav links */}
+              <nav>
+                <ul className="space-y-1">
+                  {NAV_LINKS.map((link, i) => (
+                    <li
+                      key={link.href}
+                      className="transition-all duration-300 ease-out"
+                      style={{
+                        transitionDelay: menuVisible
+                          ? `${60 + i * 40}ms`
+                          : "0ms",
+                        opacity: menuVisible ? 1 : 0,
+                        transform: menuVisible
+                          ? "translateX(0)"
+                          : "translateX(-12px)",
+                      }}
                     >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+                      <Link
+                        href={link.href}
+                        onClick={closeMenu}
+                        className="block px-4 py-3 text-[15px] font-semibold uppercase tracking-wide text-white/80 hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-150"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
 
-            {/* Divider */}
-            <div className="h-px bg-white/10" />
+              {/* Divider */}
+              <div
+                className="h-px bg-white/10 transition-all duration-300"
+                style={{
+                  transitionDelay: menuVisible ? "350ms" : "0ms",
+                  opacity: menuVisible ? 1 : 0,
+                  transform: menuVisible ? "scaleX(1)" : "scaleX(0)",
+                  transformOrigin: "left",
+                }}
+              />
 
-            {/* Phone */}
-            <div className="flex items-center gap-3 px-4">
-              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
-                <Phone className="w-5 h-5 text-[#F5A41F]" />
-              </div>
-              <div className="leading-tight">
-                <p className="text-white/50 text-[11px] uppercase tracking-widest">
-                  Пн–Пт: 9:00–19:00
-                </p>
-                <a
-                  href="tel:+79180742375"
-                  className="text-white font-bold text-[17px] tracking-wide"
-                >
-                  +7 (918) 074-23-75
-                </a>
-              </div>
-            </div>
-
-            {/* Address */}
-            <div className="flex items-center gap-3 px-4">
-              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
-                <MapPin className="w-5 h-5 text-[#F5A41F]" />
-              </div>
-              <div className="leading-tight">
-                <p className="text-white/50 text-[11px] uppercase tracking-widest mb-0.5">
-                  Адрес
-                </p>
-                <p className="text-white text-[14px] font-medium">
-                  г. Тольятти, ул. Коммунальная улица 20с7,
-                </p>
-              </div>
-            </div>
-
-            {/* Divider */}
-            <div className="h-px bg-white/10" />
-
-            {/* Messengers */}
-            <div className="flex items-center gap-3 px-4">
-              <span className="text-[11px] text-white/40 uppercase tracking-widest">
-                Онлайн
-              </span>
-              <div className="flex items-center gap-2">
-                {SOCIAL_LINKS.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    aria-label={link.label}
-                    style={{ backgroundColor: link.color }}
-                    className="w-10 h-10 rounded-xl flex items-center justify-center"
-                  >
-                    {link.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="space-y-3 px-4">
-              <Button className="w-full bg-[#1B54B4] hover:bg-[#1648a0] text-white font-semibold rounded-xl h-12 text-[14px] gap-2 shadow-none">
-                <Download className="w-4 h-4 shrink-0" />
-                Скачать каталог с ценами
-              </Button>
-              <Button
-                variant="outline"
-                className="w-full border-[#1B54B4]/60 bg-transparent text-white hover:bg-[#1B54B4]/15 hover:text-white hover:border-[#1B54B4] rounded-xl h-12 text-[14px] shadow-none"
+              {/* Phone */}
+              <div
+                className="flex items-center gap-3 px-4 transition-all duration-300"
+                style={{
+                  transitionDelay: menuVisible ? "380ms" : "0ms",
+                  opacity: menuVisible ? 1 : 0,
+                  transform: menuVisible ? "translateY(0)" : "translateY(8px)",
+                }}
               >
-                Заказать звонок
-              </Button>
+                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
+                  <Phone className="w-5 h-5 text-[#F5A41F]" />
+                </div>
+                <div className="leading-tight">
+                  <p className="text-white/50 text-[11px] uppercase tracking-widest">
+                    Пн–Пт: 9:00–19:00
+                  </p>
+                  <a
+                    href="tel:+79180742375"
+                    className="text-white font-bold text-[17px] tracking-wide"
+                  >
+                    +7 (918) 074-23-75
+                  </a>
+                </div>
+              </div>
+
+              {/* Address */}
+              <div
+                className="flex items-center gap-3 px-4 transition-all duration-300"
+                style={{
+                  transitionDelay: menuVisible ? "420ms" : "0ms",
+                  opacity: menuVisible ? 1 : 0,
+                  transform: menuVisible ? "translateY(0)" : "translateY(8px)",
+                }}
+              >
+                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5 text-[#F5A41F]" />
+                </div>
+                <div className="leading-tight">
+                  <p className="text-white/50 text-[11px] uppercase tracking-widest mb-0.5">
+                    Адрес
+                  </p>
+                  <p className="text-white text-[14px] font-medium">
+                    г. Тольятти, ул. Коммунальная улица 20с7,
+                  </p>
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div
+                className="h-px bg-white/10 transition-all duration-300"
+                style={{
+                  transitionDelay: menuVisible ? "450ms" : "0ms",
+                  opacity: menuVisible ? 1 : 0,
+                  transform: menuVisible ? "scaleX(1)" : "scaleX(0)",
+                  transformOrigin: "left",
+                }}
+              />
+
+              {/* Messengers */}
+              <div
+                className="flex items-center gap-3 px-4 transition-all duration-300"
+                style={{
+                  transitionDelay: menuVisible ? "480ms" : "0ms",
+                  opacity: menuVisible ? 1 : 0,
+                  transform: menuVisible ? "translateY(0)" : "translateY(8px)",
+                }}
+              >
+                <span className="text-[11px] text-white/40 uppercase tracking-widest">
+                  Онлайн
+                </span>
+                <div className="flex items-center gap-2">
+                  {SOCIAL_LINKS.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      aria-label={link.label}
+                      style={{ backgroundColor: link.color }}
+                      className="w-10 h-10 rounded-xl flex items-center justify-center hover:scale-110 transition-transform duration-200"
+                    >
+                      {link.icon}
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div
+                className="space-y-3 px-4 transition-all duration-300"
+                style={{
+                  transitionDelay: menuVisible ? "520ms" : "0ms",
+                  opacity: menuVisible ? 1 : 0,
+                  transform: menuVisible ? "translateY(0)" : "translateY(12px)",
+                }}
+              >
+                <Button className="w-full bg-[#1B54B4] hover:bg-[#1648a0] text-white font-semibold rounded-xl h-12 text-[14px] gap-2 shadow-none">
+                  <Download className="w-4 h-4 shrink-0" />
+                  Скачать каталог с ценами
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full border-[#1B54B4]/60 bg-transparent text-white hover:bg-[#1B54B4]/15 hover:text-white hover:border-[#1B54B4] rounded-xl h-12 text-[14px] shadow-none"
+                >
+                  Заказать звонок
+                </Button>
+              </div>
             </div>
           </div>
         </div>

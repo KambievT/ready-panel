@@ -143,16 +143,6 @@ export function Contacts() {
                   </svg>
                   <span className="text-[13px] font-semibold">WhatsApp</span>
                 </a>
-                {/* Viber */}
-                <a
-                  href="viber://chat"
-                  className="flex items-center gap-2 bg-[#7360F2]/10 hover:bg-[#7360F2] text-[#7360F2] hover:text-white rounded-xl px-4 py-2.5 transition-colors"
-                >
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
-                    <path d="M11.4 0C5.1.3.5 5.2.5 11.5c0 2.1.5 4.1 1.6 5.9L.5 24l6.8-1.6c1.7.9 3.6 1.4 5.5 1.4h.1c6.3 0 11-5.2 11-11.5C23.9 5.1 18.7 0 11.4 0zm5.8 16.3c-.3.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-5-4.3-5.1-4.5-.2-.2-1.3-1.7-1.3-3.3 0-1.5.8-2.3 1.1-2.6.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .5.4.2.5.7 1.7.8 1.8.1.1.1.3 0 .5-.1.1-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.1.5.2.6.3.1.3.1 1-.2 1.7z" />
-                  </svg>
-                  <span className="text-[13px] font-semibold">Viber</span>
-                </a>
               </div>
 
               <a
