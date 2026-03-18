@@ -29,10 +29,10 @@ export function Footer() {
   return (
     <footer className="bg-[#0B1422] text-white">
       {/* Main footer */}
-      <div className="max-w-7xl mx-auto px-6 py-14">
-        <div className="grid grid-cols-[220px_1fr_1fr_1fr_1fr] gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 lg:py-14">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-[220px_1fr_1fr_1fr_1fr] gap-8 lg:gap-10">
           {/* Logo + social */}
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-8 col-span-2 sm:col-span-2 lg:col-span-1">
             {/* Logo */}
             <Link href="/" className="shrink-0 select-none">
               <div className="inline-flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl px-4 py-3">
@@ -137,8 +137,10 @@ export function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-          <p className="text-[13px] text-white/40">© Все права защищены</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-[13px] text-white/40 text-center sm:text-left">
+            © Все права защищены
+          </p>
           <Link
             href="#"
             className="text-[13px] text-[#2ECC71] hover:underline transition-colors"

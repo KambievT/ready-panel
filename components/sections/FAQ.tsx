@@ -71,7 +71,7 @@ export function FAQ() {
         </span>
       </button>
       {open === faq.id && (
-        <p className="text-[14px] text-[#5A6A85] leading-relaxed pb-5 pr-10">
+        <p className="text-[14px] text-[#5A6A85] leading-relaxed pb-5 pr-0 sm:pr-10">
           {faq.answer}
         </p>
       )}
@@ -79,12 +79,12 @@ export function FAQ() {
   );
 
   return (
-    <section className="bg-white py-20 border-b border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Heading */}
-        <h2 className="text-[40px] font-extrabold text-[#0B1422] tracking-tight text-center leading-tight mb-12">
+        <h2 className="text-[24px] sm:text-[32px] lg:text-[40px] font-extrabold text-[#0B1422] tracking-tight text-center leading-tight mb-8 lg:mb-12">
           Перед покупкой и установкой падел-кортов
-          <br />у нас часто спрашивают
+          <br className="hidden sm:block" />у нас часто спрашивают
         </h2>
 
         {/* Accordion */}
@@ -95,12 +95,12 @@ export function FAQ() {
         </div>
 
         {/* WhatsApp CTA */}
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center mt-8 lg:mt-12">
           <a
             href="https://wa.me/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 bg-white border-2 border-[#E2E8F0] hover:border-[#25D366] rounded-full px-8 h-14 font-semibold text-[15px] text-[#0B1422] transition-colors duration-150 shadow-sm hover:shadow-md"
+            className="flex items-center gap-3 bg-white border-2 border-[#E2E8F0] hover:border-[#25D366] rounded-full px-5 sm:px-8 h-12 sm:h-14 font-semibold text-[13px] sm:text-[15px] text-[#0B1422] transition-colors duration-150 shadow-sm hover:shadow-md text-center"
           >
             ЗАДАТЬ СВОЙ ВОПРОС В WHATSAPP
             <span className="w-8 h-8 rounded-full bg-[#25D366] flex items-center justify-center shrink-0">

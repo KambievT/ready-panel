@@ -1,8 +1,8 @@
 export function SeoText() {
   return (
-    <section className="bg-white py-16 border-b border-[#E2E8F0]">
-      <div className="max-w-5xl mx-auto px-6 flex flex-col gap-6">
-        <h1 className="text-[24px] font-extrabold text-[#0B1422] text-center leading-snug">
+    <section className="bg-white py-10 md:py-12 lg:py-16 border-b border-[#E2E8F0]">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col gap-5 sm:gap-6">
+        <h1 className="text-[20px] sm:text-[22px] lg:text-[24px] font-extrabold text-[#0B1422] text-center leading-snug">
           Падел корты под ключ: производство, продажа и монтаж в России
         </h1>
 

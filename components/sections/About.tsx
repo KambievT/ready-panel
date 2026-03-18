@@ -11,24 +11,27 @@ const QUOTE =
 
 export function About() {
   return (
-    <section className="bg-[#F8FAFC] py-20 border-b border-[#E2E8F0]">
-      <div className="max-w-3xl mx-auto px-6 flex flex-col items-center text-center gap-8">
+    <section className="bg-[#F8FAFC] py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-6 sm:gap-8">
         {/* Heading */}
-        <h2 className="text-[28px] font-extrabold text-[#0B1422] tracking-tight">
+        <h2 className="text-[24px] sm:text-[28px] font-extrabold text-[#0B1422] tracking-tight">
           О компании «Ready Padel»
         </h2>
 
         {/* Paragraphs */}
         <div className="flex flex-col gap-6 w-full">
           {PARAGRAPHS.map((text, i) => (
-            <p key={i} className="text-[16px] text-[#3D4F6A] leading-relaxed">
+            <p
+              key={i}
+              className="text-[15px] sm:text-[16px] text-[#3D4F6A] leading-relaxed"
+            >
               {text}
             </p>
           ))}
         </div>
 
         {/* Quote */}
-        <p className="text-[17px] font-semibold text-[#0B1422] italic leading-relaxed border-l-4 border-[#2ECC71] pl-5 text-left w-full">
+        <p className="text-[15px] sm:text-[17px] font-semibold text-[#0B1422] italic leading-relaxed border-l-4 border-[#2ECC71] pl-4 sm:pl-5 text-left w-full">
           {QUOTE}
         </p>
       </div>

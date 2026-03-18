@@ -20,15 +20,15 @@ const ARTICLES = [
 
 export function Blog() {
   return (
-    <section className="bg-white py-20 border-b border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Heading */}
-        <h2 className="text-[40px] font-extrabold text-[#0B1422] tracking-tight text-center mb-12">
+        <h2 className="text-[26px] sm:text-[32px] lg:text-[40px] font-extrabold text-[#0B1422] tracking-tight text-center mb-8 lg:mb-12">
           Полезные статьи и новости
         </h2>
 
         {/* Cards */}
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {ARTICLES.map((article) => (
             <a
               key={article.id}

@@ -59,22 +59,22 @@ export function Process() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="bg-white py-20 border-b border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Heading */}
-        <h2 className="text-[40px] font-extrabold text-[#0B1422] tracking-tight text-center leading-tight mb-10">
+        <h2 className="text-[24px] sm:text-[32px] lg:text-[40px] font-extrabold text-[#0B1422] tracking-tight text-center leading-tight mb-8 lg:mb-10">
           Посмотрите как происходит процесс
-          <br />
+          <br className="hidden sm:block" />
           установки кортов от начала и до конца
         </h2>
 
         {/* Step tabs */}
-        <div className="flex items-center gap-2 flex-wrap mb-8">
+        <div className="flex items-center gap-2 flex-wrap mb-6 lg:mb-8 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 sm:overflow-visible">
           {STEPS.map((step, i) => (
             <button
               key={step.id}
               onClick={() => setActive(i)}
-              className={`px-4 py-2 rounded-full text-[14px] font-semibold border transition-colors duration-150 cursor-pointer whitespace-nowrap ${
+              className={`px-3 sm:px-4 py-2 rounded-full text-[13px] sm:text-[14px] font-semibold border transition-colors duration-150 cursor-pointer whitespace-nowrap ${
                 i === active
                   ? "bg-[#00BCD4] text-white border-[#00BCD4]"
                   : "bg-white text-[#5A6A85] border-[#C8D6E5] hover:border-[#00BCD4] hover:text-[#00BCD4]"
@@ -86,7 +86,7 @@ export function Process() {
         </div>
 
         {/* Photos grid */}
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {STEPS[active].photos.map((photo, i) => (
             <div
               key={i}

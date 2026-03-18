@@ -66,8 +66,8 @@ export function Header() {
 
   return (
     <header className="bg-[#0B1422] text-white border-b border-white/5">
-      {/* ── Desktop header ── */}
-      <div className="max-w-7xl hidden lg:flex items-center gap-8 px-6 h-18">
+      {/* ── Desktop: Main bar ── */}
+      <div className="max-w-7xl mx-auto hidden lg:flex items-center gap-6 px-6 h-20">
         {/* Logo */}
         <Link href="/" className="shrink-0 select-none">
           <span className="text-[22px] font-extrabold italic tracking-tight">
@@ -76,76 +76,13 @@ export function Header() {
           </span>
         </Link>
 
-        {/* Divider */}
-        <div className="w-px h-8 bg-white/10 shrink-0" />
-
-        {/* Address */}
-        <div className="flex items-center gap-2 shrink-0">
-          <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center shrink-0">
-            <MapPin className="w-4 h-4 text-[#F5A41F]" />
-          </div>
-          <div className="leading-tight text-xs text-gray-400">
-            <p className="text-white/50 text-[10px] uppercase tracking-widest mb-0.5">
-              Адрес
-            </p>
-            <p className="text-white text-[13px] font-medium">
-              г. Тольятти, ул. Коммунальная улица 20с7,
-            </p>
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="w-px h-8 bg-white/10 shrink-0" />
+        <div className="flex-1" />
 
         {/* CTA Button */}
         <Button className="bg-[#1B54B4] hover:bg-[#1648a0] active:bg-[#12408f] text-white font-semibold rounded-xl px-5 h-10 text-[13px] shrink-0 gap-2 shadow-none transition-colors duration-150">
           <Download className="w-3.75 h-3.75 shrink-0" />
           Скачать каталог с ценами
         </Button>
-
-        {/* Spacer */}
-        <div className="flex-1" />
-
-        {/* Messengers */}
-        <div className="flex items-center gap-3 shrink-0">
-          <span className="text-[11px] text-white/40 uppercase tracking-widest">
-            Онлайн
-          </span>
-          <div className="flex items-center gap-1.5">
-            {SOCIAL_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                aria-label={link.label}
-                style={{ backgroundColor: link.color }}
-                className="w-8 h-8 rounded-lg flex items-center justify-center transition-opacity duration-150 hover:opacity-80"
-              >
-                {link.icon}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="w-px h-8 bg-white/10 shrink-0" />
-
-        {/* Phone */}
-        <div className="flex items-center gap-2.5 shrink-0">
-          <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center shrink-0">
-            <Phone className="w-4 h-4 text-[#F5A41F]" />
-          </div>
-          <div className="leading-tight">
-            <p className="text-white/50 text-[10px] uppercase tracking-widest">
-              Пн–Пт: 9:00–19:00
-            </p>
-            <a
-              href="tel:+79180742375"
-              className="text-white font-bold text-[15px] tracking-wide hover:text-[#F5A41F] transition-colors duration-150"
-            >
-              +7 (918) 074-23-75
-            </a>
-          </div>
-        </div>
 
         {/* Callback Button */}
         <Button
@@ -154,6 +91,55 @@ export function Header() {
         >
           Заказать звонок
         </Button>
+      </div>
+
+      {/* ── Desktop: Info bar ── */}
+      <div className="hidden lg:block border-t border-white/5 bg-[#0B1422]">
+        <div className="max-w-7xl mx-auto flex items-center gap-6 px-6 h-10">
+          {/* Address */}
+          <div className="flex items-center gap-2 shrink-0">
+            <MapPin className="w-3.5 h-3.5 text-[#F5A41F] shrink-0" />
+            <span className="text-[12px] text-white/60">
+              г. Тольятти, ул. Коммунальная улица 20с7
+            </span>
+          </div>
+
+          <div className="flex-1" />
+
+          {/* Messengers */}
+          <div className="flex items-center gap-2.5 shrink-0">
+            <span className="text-[10px] text-white/40 uppercase tracking-widest">
+              Онлайн
+            </span>
+            <div className="flex items-center gap-1.5">
+              {SOCIAL_LINKS.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  aria-label={link.label}
+                  style={{ backgroundColor: link.color }}
+                  className="w-6 h-6 rounded-md flex items-center justify-center transition-opacity duration-150 hover:opacity-80"
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="w-px h-5 bg-white/10 shrink-0" />
+
+          {/* Phone */}
+          <div className="flex items-center gap-2 shrink-0">
+            <Phone className="w-3.5 h-3.5 text-[#F5A41F] shrink-0" />
+            <span className="text-[11px] text-white/50">Пн–Пт: 9:00–19:00</span>
+            <a
+              href="tel:+79180742375"
+              className="text-white font-bold text-[14px] tracking-wide hover:text-[#F5A41F] transition-colors duration-150"
+            >
+              +7 (918) 074-23-75
+            </a>
+          </div>
+        </div>
       </div>
 
       {/* ── Mobile header ── */}

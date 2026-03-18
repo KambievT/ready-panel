@@ -39,19 +39,19 @@ const FEATURES = [
 
 export function WhyUs() {
   return (
-    <section className="bg-white py-20 border-b border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex gap-16 items-start">
+    <section className="bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
           {/* Left side */}
           <div className="flex-1 min-w-0">
             {/* Heading */}
-            <h2 className="text-[36px] font-extrabold text-[#0B1422] leading-tight tracking-tight mb-10">
+            <h2 className="text-[26px] sm:text-[30px] lg:text-[36px] font-extrabold text-[#0B1422] leading-tight tracking-tight mb-8 lg:mb-10">
               Вы можете нам довериться и быть спокойными за качество и сроки
               установки падел-кортов
             </h2>
 
             {/* Features grid */}
-            <div className="grid grid-cols-3 gap-x-8 gap-y-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-x-8 sm:gap-y-8">
               {FEATURES.map((feature) => (
                 <div key={feature.id} className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
@@ -71,7 +71,7 @@ export function WhyUs() {
           </div>
 
           {/* Right side — guarantee block */}
-          <div className="w-65 shrink-0 flex flex-col items-center gap-5">
+          <div className="w-full lg:w-65 shrink-0 flex flex-col items-center gap-5">
             <div className="text-center">
               <p className="font-bold text-[18px] text-[#0B1422] leading-snug">
                 Все под контролем:

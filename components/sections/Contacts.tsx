@@ -14,13 +14,13 @@ const SITE_PHOTOS = [
 
 export function Contacts() {
   return (
-    <section className="bg-white py-16 border-b border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-[220px_1fr_1fr] gap-10 items-start">
+    <section className="bg-white py-10 md:py-12 lg:py-16 border-b border-[#E2E8F0]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[220px_1fr_1fr] gap-8 lg:gap-10 items-start">
           {/* Left — contact info */}
-          <div className="flex flex-col gap-6">
-            <h2 className="text-[32px] font-light text-[#0B1422] leading-tight">
-              Наши <br />
+          <div className="flex flex-col gap-6 md:col-span-2 lg:col-span-1">
+            <h2 className="text-[26px] sm:text-[32px] font-light text-[#0B1422] leading-tight">
+              Наши <br className="hidden sm:block" />
               <span className="font-extrabold">КОНТАКТЫ</span>
             </h2>
 
@@ -143,8 +143,8 @@ export function Contacts() {
           </div>
 
           {/* Right — map */}
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-2 md:col-span-2 lg:col-span-1">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1">
               <h3 className="text-[16px] font-bold text-[#0B1422]">
                 Адрес офиса:
               </h3>
@@ -158,7 +158,7 @@ export function Contacts() {
               </a>
             </div>
 
-            <div className="relative rounded-xl overflow-hidden border border-[#E2E8F0] h-135">
+            <div className="relative rounded-xl overflow-hidden border border-[#E2E8F0] h-80 sm:h-100 lg:h-135">
               <iframe
                 src="https://yandex.ru/map-widget/v1/?ll=37.576800%2C55.683600&z=10&pt=37.576800,55.683600,pm2rdm"
                 width="100%"

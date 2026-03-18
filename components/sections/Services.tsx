@@ -25,25 +25,25 @@ const SERVICES = [
 
 export function Services() {
   return (
-    <section className="bg-white py-20 border-b border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Heading */}
-        <h2 className="text-[40px] font-extrabold text-[#0B1422] tracking-tight text-center mb-12">
+        <h2 className="text-[26px] sm:text-[32px] lg:text-[40px] font-extrabold text-[#0B1422] tracking-tight text-center mb-8 lg:mb-12">
           Наши дополнительные услуги:
         </h2>
 
         {/* Cards grid */}
-        <div className="grid grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {SERVICES.map((service) => (
             <div
               key={service.id}
-              className={`relative rounded-2xl overflow-hidden bg-linear-to-br ${service.bg} aspect-3/4 flex flex-col justify-between p-6 group`}
+              className={`relative rounded-2xl overflow-hidden bg-linear-to-br ${service.bg} aspect-3/4 sm:aspect-4/3 lg:aspect-3/4 flex flex-col justify-between p-5 sm:p-6 group`}
             >
               {/* Overlay for depth */}
               <div className="absolute inset-0 bg-linear-to-b from-black/20 via-transparent to-black/60 pointer-events-none" />
 
               {/* Title */}
-              <h3 className="relative text-white font-bold text-[20px] leading-snug whitespace-pre-line drop-shadow-sm">
+              <h3 className="relative text-white font-bold text-[18px] sm:text-[20px] leading-snug whitespace-pre-line drop-shadow-sm">
                 {service.title}
               </h3>
 

@@ -20,12 +20,12 @@ export function Consultation() {
 
   return (
     <section className="bg-[#D1D5DB] py-0 overflow-hidden border-b border-[#C0C4CC]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-[1fr_auto_1fr] gap-0 items-end min-h-105">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-0 items-end lg:min-h-105">
           {/* Left — text */}
-          <div className="py-14 flex flex-col gap-6 justify-center">
+          <div className="py-10 lg:py-14 flex flex-col gap-5 sm:gap-6 justify-center">
             <div>
-              <h2 className="text-[36px] font-extrabold text-[#0B1422] leading-tight tracking-tight">
+              <h2 className="text-[26px] sm:text-[30px] lg:text-[36px] font-extrabold text-[#0B1422] leading-tight tracking-tight">
                 Получите бесплатную консультацию нашего лучшего специалиста
               </h2>
               <p className="text-[15px] text-[#3D4F6A] mt-3">
@@ -78,7 +78,7 @@ export function Consultation() {
           </div>
 
           {/* Center — specialist photo placeholder */}
-          <div className="flex flex-col items-center justify-end self-end px-10">
+          <div className="hidden lg:flex flex-col items-center justify-end self-end px-10">
             <div className="relative">
               {/* Photo */}
               <div className="w-52 h-72 bg-[#9CA3AF] rounded-t-full flex items-end justify-center overflow-hidden">
@@ -94,9 +94,9 @@ export function Consultation() {
           </div>
 
           {/* Right — form */}
-          <div className="py-14 flex flex-col gap-6 justify-center">
+          <div className="py-10 lg:py-14 flex flex-col gap-5 sm:gap-6 justify-center">
             <div>
-              <h3 className="text-[28px] font-extrabold text-[#0B1422] leading-tight">
+              <h3 className="text-[22px] sm:text-[26px] lg:text-[28px] font-extrabold text-[#0B1422] leading-tight">
                 Заполните форму, свяжусь с вами
               </h3>
               <ul className="mt-4 flex flex-col gap-2">

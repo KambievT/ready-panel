@@ -69,16 +69,16 @@ export function TopSales() {
   const court = COURTS.find((c) => c.id === activeId)!;
 
   return (
-    <section className="bg-white py-20 border-b border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Heading */}
-        <h2 className="text-[38px] font-extrabold text-[#0B1422] leading-tight tracking-tight text-center max-w-2xl mx-auto">
+        <h2 className="text-[24px] sm:text-[30px] lg:text-[38px] font-extrabold text-[#0B1422] leading-tight tracking-tight text-center max-w-2xl mx-auto">
           3 самые популярные модели падел кортов{" "}
           <span className="text-[#1B54B4]">в наличии на складе</span> в Москве
         </h2>
 
         {/* Tabs */}
-        <div className="mt-10 flex items-center gap-3 justify-center flex-wrap">
+        <div className="mt-6 sm:mt-8 lg:mt-10 flex items-center gap-2 sm:gap-3 justify-center flex-wrap">
           {COURTS.map((c) => (
             <button
               key={c.id}
@@ -86,7 +86,7 @@ export function TopSales() {
                 setActiveId(c.id);
                 setActiveThumb(0);
               }}
-              className={`px-6 py-2.5 rounded-full text-[14px] font-semibold border transition-all duration-150 cursor-pointer ${
+              className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-[13px] sm:text-[14px] font-semibold border transition-all duration-150 cursor-pointer ${
                 activeId === c.id
                   ? "bg-[#1B54B4] border-[#1B54B4] text-white shadow-sm"
                   : "bg-white border-[#CBD5E0] text-[#4A5568] hover:border-[#1B54B4] hover:text-[#1B54B4]"
@@ -98,7 +98,7 @@ export function TopSales() {
         </div>
 
         {/* Content grid */}
-        <div className="mt-12 grid grid-cols-2 gap-14 items-start">
+        <div className="mt-8 sm:mt-10 lg:mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start">
           {/* Left — gallery */}
           <div className="flex flex-col gap-4">
             {/* Main image */}
@@ -139,7 +139,7 @@ export function TopSales() {
             </div>
 
             {/* Thumbnails */}
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-4 gap-2 sm:gap-3">
               {THUMB_COLORS.map((color, i) => (
                 <button
                   key={i}
@@ -157,8 +157,8 @@ export function TopSales() {
           {/* Right — specs */}
           <div className="flex flex-col">
             {/* Title + badge */}
-            <div className="flex items-center gap-4">
-              <h3 className="text-[28px] font-extrabold text-[#0B1422] tracking-tight">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+              <h3 className="text-[22px] sm:text-[26px] lg:text-[28px] font-extrabold text-[#0B1422] tracking-tight">
                 {court.label}
               </h3>
               {court.inStock ? (
@@ -189,18 +189,20 @@ export function TopSales() {
             </ul>
 
             {/* Price */}
-            <div className="mt-6 pt-6 border-t border-[#E2E8F0] flex items-baseline gap-3">
-              <span className="text-[15px] text-[#718096]">Цена от:</span>
-              <span className="text-[40px] font-extrabold text-[#0B1422] tracking-tight leading-none">
+            <div className="mt-6 pt-6 border-t border-[#E2E8F0] flex flex-wrap items-baseline gap-2 sm:gap-3">
+              <span className="text-[14px] sm:text-[15px] text-[#718096]">
+                Цена от:
+              </span>
+              <span className="text-[28px] sm:text-[34px] lg:text-[40px] font-extrabold text-[#0B1422] tracking-tight leading-none">
                 {court.price}
               </span>
-              <span className="text-[20px] font-semibold text-[#4A5568]">
+              <span className="text-[16px] sm:text-[18px] lg:text-[20px] font-semibold text-[#4A5568]">
                 руб
               </span>
             </div>
 
             {/* CTAs */}
-            <div className="mt-6 flex items-center gap-4">
+            <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <Button className="bg-[#1B54B4] hover:bg-[#1648a0] text-white font-bold rounded-xl h-12 px-7 text-[14px] shadow-none gap-2 transition-colors duration-150">
                 Заказать корт
                 <ArrowRight className="w-4 h-4" />

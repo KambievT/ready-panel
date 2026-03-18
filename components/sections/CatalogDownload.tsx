@@ -20,32 +20,32 @@ export function CatalogDownload() {
   const [agreed, setAgreed] = useState(true);
 
   return (
-    <section className="relative overflow-hidden bg-[#F7F8FA] py-20 border-b border-[#E2E8F0]">
+    <section className="relative overflow-hidden bg-[#F7F8FA] py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
       {/* Blurred background blobs */}
       <div className="pointer-events-none absolute -top-20 -left-20 w-96 h-96 rounded-full bg-[#1B54B4]/6 blur-3xl" />
       <div className="pointer-events-none absolute bottom-0 right-64 w-80 h-80 rounded-full bg-[#F5A41F]/5 blur-3xl" />
 
-      <div className="relative max-w-7xl mx-auto px-6 grid grid-cols-2 gap-16 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         {/* Left */}
         <div className="flex flex-col gap-8">
-          <h2 className="text-[44px] font-extrabold text-[#0B1422] leading-[1.1] tracking-tight">
+          <h2 className="text-[26px] sm:text-[34px] lg:text-[44px] font-extrabold text-[#0B1422] leading-[1.1] tracking-tight">
             Скачайте полный{" "}
             <span className="text-[#1B54B4]">прайс-каталог</span> с ценами и
             характеристиками
           </h2>
 
-          <div className="flex flex-col gap-5">
-            <p className="text-[#4A5568] text-lg">
+          <div className="flex flex-col gap-4 sm:gap-5">
+            <p className="text-[#4A5568] text-base lg:text-lg">
               Выберите куда вам удобнее отправить каталог?
             </p>
 
             {/* Controls row */}
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               {/* Messenger dropdown */}
               <div className="relative">
                 <button
                   onClick={() => setOpen((v) => !v)}
-                  className="flex items-center gap-3 bg-white border border-[#CBD5E0] hover:border-[#1B54B4] rounded-2xl px-5 h-14 text-[15px] font-medium text-[#2D3748] transition-colors duration-150 min-w-56 justify-between cursor-pointer"
+                  className="flex items-center gap-3 bg-white border border-[#CBD5E0] hover:border-[#1B54B4] rounded-2xl px-5 h-12 sm:h-14 text-[14px] sm:text-[15px] font-medium text-[#2D3748] transition-colors duration-150 w-full sm:w-auto sm:min-w-56 justify-between cursor-pointer"
                 >
                   {messenger}
                   <ChevronDown
@@ -78,11 +78,11 @@ export function CatalogDownload() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="Ваш номер телефона"
-                className="flex-1 bg-white border border-[#CBD5E0] hover:border-[#1B54B4] focus:border-[#1B54B4] focus:outline-none rounded-2xl px-5 h-14 text-[15px] text-[#2D3748] placeholder:text-[#A0AEC0] transition-colors duration-150"
+                className="flex-1 bg-white border border-[#CBD5E0] hover:border-[#1B54B4] focus:border-[#1B54B4] focus:outline-none rounded-2xl px-5 h-12 sm:h-14 text-[14px] sm:text-[15px] text-[#2D3748] placeholder:text-[#A0AEC0] transition-colors duration-150"
               />
 
               {/* CTA */}
-              <Button className="bg-[#1B54B4] hover:bg-[#1648a0] text-white font-bold rounded-2xl h-14 px-8 text-[14px] uppercase tracking-wide gap-2 shadow-none transition-colors duration-150 shrink-0">
+              <Button className="bg-[#1B54B4] hover:bg-[#1648a0] text-white font-bold rounded-2xl h-12 sm:h-14 px-6 sm:px-8 text-[13px] sm:text-[14px] uppercase tracking-wide gap-2 shadow-none transition-colors duration-150 shrink-0">
                 Получить каталог
                 <ArrowUpRight className="w-4 h-4" />
               </Button>
@@ -107,7 +107,7 @@ export function CatalogDownload() {
         </div>
 
         {/* Right — catalog visual */}
-        <div className="flex justify-center items-center relative">
+        <div className="flex justify-center items-center relative order-first lg:order-none">
           {/* Updated badge */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center gap-1 select-none">
             <div className="relative w-24 h-24">

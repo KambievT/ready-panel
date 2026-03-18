@@ -40,21 +40,35 @@ const SLIDES = [
   },
 ];
 
-const VISIBLE = 3;
 const GAP = 20;
 
+function useVisible() {
+  const [visible, setVisible] = useState(1);
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      setVisible(w >= 1024 ? 3 : w >= 640 ? 2 : 1);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return visible;
+}
+
 export function Promo() {
+  const visible = useVisible();
   const [index, setIndex] = useState(0);
   const outerRef = useRef<HTMLDivElement>(null);
   const [cardWidth, setCardWidth] = useState(0);
 
-  const maxIndex = SLIDES.length - VISIBLE;
+  const maxIndex = Math.max(0, SLIDES.length - visible);
 
   useEffect(() => {
     const update = () => {
       if (outerRef.current) {
         setCardWidth(
-          (outerRef.current.offsetWidth - GAP * (VISIBLE - 1)) / VISIBLE,
+          (outerRef.current.offsetWidth - GAP * (visible - 1)) / visible,
         );
       }
     };
@@ -62,24 +76,26 @@ export function Promo() {
     const ro = new ResizeObserver(update);
     if (outerRef.current) ro.observe(outerRef.current);
     return () => ro.disconnect();
-  }, []);
+  }, [visible]);
+
+  const clampedIndex = Math.min(index, maxIndex);
 
   const goTo = (i: number) => setIndex(Math.max(0, Math.min(maxIndex, i)));
 
   return (
-    <section className="bg-[#F8FAFC] py-20 border-b border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-[#F8FAFC] py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Heading */}
-        <h2 className="text-[40px] font-extrabold text-[#0B1422] tracking-tight text-center mb-12 leading-tight">
+        <h2 className="text-[24px] sm:text-[32px] lg:text-[40px] font-extrabold text-[#0B1422] tracking-tight text-center mb-8 lg:mb-12 leading-tight">
           Воспользуйтесь акцией чтобы сэкономить свои деньги
         </h2>
 
         <div className="relative">
           {/* Prev arrow */}
           <button
-            onClick={() => goTo(index - 1)}
-            disabled={index === 0}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-[#E2E8F0] flex items-center justify-center text-[#0B1422] hover:bg-[#F1F5F9] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            onClick={() => goTo(clampedIndex - 1)}
+            disabled={clampedIndex === 0}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 sm:-translate-x-5 lg:-translate-x-6 z-10 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-md border border-[#E2E8F0] flex items-center justify-center text-[#0B1422] hover:bg-[#F1F5F9] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -92,21 +108,21 @@ export function Promo() {
                 gap: GAP,
                 transform:
                   cardWidth > 0
-                    ? `translateX(-${index * (cardWidth + GAP)}px)`
+                    ? `translateX(-${clampedIndex * (cardWidth + GAP)}px)`
                     : undefined,
               }}
             >
               {SLIDES.map((slide) => (
                 <div
                   key={slide.id}
-                  className="shrink-0 rounded-2xl p-7 flex flex-col justify-between min-h-65"
+                  className="shrink-0 rounded-2xl p-5 sm:p-7 flex flex-col justify-between min-h-52 sm:min-h-65"
                   style={{
                     width: cardWidth > 0 ? cardWidth : undefined,
                     background: slide.bg,
                   }}
                 >
                   <div className="flex flex-col gap-3">
-                    <h3 className="text-white font-extrabold text-[22px] leading-snug">
+                    <h3 className="text-white font-extrabold text-[18px] sm:text-[22px] leading-snug">
                       {slide.title}
                     </h3>
                     <p className="text-white/75 text-[14px] leading-relaxed">
@@ -123,9 +139,9 @@ export function Promo() {
 
           {/* Next arrow */}
           <button
-            onClick={() => goTo(index + 1)}
-            disabled={index === maxIndex}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-[#E2E8F0] flex items-center justify-center text-[#0B1422] hover:bg-[#F1F5F9] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            onClick={() => goTo(clampedIndex + 1)}
+            disabled={clampedIndex === maxIndex}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 sm:translate-x-5 lg:translate-x-6 z-10 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-md border border-[#E2E8F0] flex items-center justify-center text-[#0B1422] hover:bg-[#F1F5F9] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
@@ -138,7 +154,7 @@ export function Promo() {
               key={i}
               onClick={() => goTo(i)}
               className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                i === index ? "bg-[#0B1422] w-6" : "bg-[#C8D6E5] w-2.5"
+                i === clampedIndex ? "bg-[#0B1422] w-6" : "bg-[#C8D6E5] w-2.5"
               }`}
             />
           ))}
