@@ -1,3 +1,5 @@
+import { Animate } from "@/app/components/Animate";
+
 const ARTICLES = [
   {
     id: "cost",
@@ -28,7 +30,10 @@ export function Blog() {
         </h2>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <Animate
+          animation="stagger"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+        >
           {ARTICLES.map((article) => (
             <a
               key={article.id}
@@ -52,7 +57,7 @@ export function Blog() {
               </div>
             </a>
           ))}
-        </div>
+        </Animate>
       </div>
     </section>
   );

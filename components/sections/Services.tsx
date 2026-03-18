@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Animate } from "@/app/components/Animate";
 
 const SERVICES = [
   {
@@ -33,7 +34,10 @@ export function Services() {
         </h2>
 
         {/* Cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <Animate
+          animation="stagger"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"
+        >
           {SERVICES.map((service) => (
             <div
               key={service.id}
@@ -54,7 +58,7 @@ export function Services() {
               </button>
             </div>
           ))}
-        </div>
+        </Animate>
       </div>
     </section>
   );

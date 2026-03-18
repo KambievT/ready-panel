@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import { Animate } from "@/app/components/Animate";
 
 const FEATURES = [
   {
@@ -51,7 +52,10 @@ export function WhyUs() {
             </h2>
 
             {/* Features grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-x-8 sm:gap-y-8">
+            <Animate
+              animation="stagger"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-x-8 sm:gap-y-8"
+            >
               {FEATURES.map((feature) => (
                 <div key={feature.id} className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
@@ -67,7 +71,7 @@ export function WhyUs() {
                   </p>
                 </div>
               ))}
-            </div>
+            </Animate>
           </div>
 
           {/* Right side — guarantee block */}

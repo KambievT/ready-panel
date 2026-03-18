@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
+import { Parallax } from "@/app/components/Animate";
 
 const FEATURES = [
   "Гарантия минимальной цены — нашли дешевле, сделаем скидку*",
@@ -20,8 +21,18 @@ export function Hero() {
       />
 
       {/* Accent gradient blob */}
-      <div className="pointer-events-none absolute -top-40 -right-40 w-150 h-150 rounded-full bg-[#1B54B4]/5 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 left-0 w-100 h-100 rounded-full bg-[#F5A41F]/5 blur-3xl" />
+      <Parallax
+        speed={0.05}
+        className="pointer-events-none absolute -top-40 -right-40"
+      >
+        <div className="w-150 h-150 rounded-full bg-[#1B54B4]/5 blur-3xl animate-float" />
+      </Parallax>
+      <Parallax
+        speed={-0.04}
+        className="pointer-events-none absolute bottom-0 left-0"
+      >
+        <div className="w-100 h-100 rounded-full bg-[#F5A41F]/5 blur-3xl animate-float-delayed" />
+      </Parallax>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 w-full py-12 md:py-16 lg:py-20 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         {/* Left — text */}
@@ -69,7 +80,7 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
-            <Button className="bg-[#1B54B4] hover:bg-[#1648a0] text-white font-bold rounded-xl h-12 sm:h-13 px-6 sm:px-7 text-[14px] sm:text-[15px] shadow-none gap-2 transition-colors duration-150">
+            <Button className="bg-[#1B54B4] hover:bg-[#1648a0] text-white font-bold rounded-xl h-12 sm:h-13 px-6 sm:px-7 text-[14px] sm:text-[15px] shadow-none gap-2 transition-colors duration-150 animate-pulse-glow">
               Скачать каталог с ценами
               <ArrowRight className="w-4 h-4" />
             </Button>
