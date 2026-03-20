@@ -15,7 +15,7 @@ const ADVANTAGES = [
 export function SeoText() {
   return (
     <section className="bg-[#F8FAFC] py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="mx-auto px-4 sm:px-6 lg:px-10">
         {/* Header */}
         <div className="text-center mb-10 lg:mb-14">
           <h1 className="text-[22px] sm:text-[26px] lg:text-[30px] font-extrabold text-[#0B1422] tracking-tight leading-snug">

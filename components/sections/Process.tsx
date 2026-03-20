@@ -60,7 +60,7 @@ export function Process() {
 
   return (
     <section className="bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="mx-auto px-4 sm:px-6 lg:px-10">
         {/* Heading */}
         <h2 className="text-[24px] sm:text-[32px] lg:text-[40px] font-extrabold text-[#0B1422] tracking-tight text-center leading-tight mb-8 lg:mb-10">
           Посмотрите как происходит процесс

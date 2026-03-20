@@ -15,7 +15,7 @@ const SITE_PHOTOS = [
 export function Contacts() {
   return (
     <section className="bg-gradient-to-b from-[#F7F9FC] to-white py-16 md:py-20 lg:py-24 border-b border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="mx-auto px-4 sm:px-6 lg:px-10">
         {/* Section header */}
         <div className="text-center mb-12 lg:mb-16">
           <div className="inline-flex items-center gap-2 bg-[#1B54B4]/8 border border-[#1B54B4]/20 text-[#1B54B4] rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium mb-4">

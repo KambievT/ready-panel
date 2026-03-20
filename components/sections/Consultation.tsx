@@ -20,7 +20,7 @@ export function Consultation() {
 
   return (
     <section className="bg-[#D1D5DB] py-0 overflow-hidden border-b border-[#C0C4CC]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="mx-auto px-4 sm:px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-0 items-end lg:min-h-105">
           {/* Left — text */}
           <div className="py-10 lg:py-14 flex flex-col gap-5 sm:gap-6 justify-center">

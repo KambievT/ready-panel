@@ -25,7 +25,7 @@ export function CatalogDownload() {
       <div className="pointer-events-none absolute -top-20 -left-20 w-96 h-96 rounded-full bg-[#1B54B4]/6 blur-3xl" />
       <div className="pointer-events-none absolute bottom-0 right-64 w-80 h-80 rounded-full bg-[#F5A41F]/5 blur-3xl" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div className="relative mx-auto px-4 sm:px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         {/* Left */}
         <div className="flex flex-col gap-8">
           <h2 className="text-[26px] sm:text-[34px] lg:text-[44px] font-extrabold text-[#0B1422] leading-[1.1] tracking-tight">
@@ -152,7 +152,7 @@ export function CatalogDownload() {
           </div>
 
           {/* Book placeholder */}
-          <div className="relative mt-8 w-full max-w-md aspect-4/3">
+          <div className="relative mt-8 w-full max-w-md aspect-4/3 max-h-[500px]">
             {/* Shadow */}
             <div className="absolute bottom-0 left-8 right-8 h-8 bg-black/10 blur-xl rounded-full" />
 

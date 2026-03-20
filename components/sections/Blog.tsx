@@ -23,7 +23,7 @@ const ARTICLES = [
 export function Blog() {
   return (
     <section className="bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="mx-auto px-4 sm:px-6 lg:px-10">
         {/* Heading */}
         <h2 className="text-[26px] sm:text-[32px] lg:text-[40px] font-extrabold text-[#0B1422] tracking-tight text-center mb-8 lg:mb-12">
           Полезные статьи и новости
@@ -38,7 +38,7 @@ export function Blog() {
             <a
               key={article.id}
               href="#"
-              className="group relative rounded-2xl overflow-hidden aspect-4/3 flex flex-col justify-end cursor-pointer"
+              className="group relative rounded-2xl overflow-hidden aspect-4/3 max-h-[500px] flex flex-col justify-end cursor-pointer"
             >
               {/* Photo placeholder */}
               <div className={`absolute inset-0 ${article.bg}`} />

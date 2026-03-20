@@ -70,7 +70,7 @@ export function TopSales() {
 
   return (
     <section className="bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="mx-auto px-4 sm:px-6 lg:px-10">
         {/* Heading */}
         <h2 className="text-[24px] sm:text-[30px] lg:text-[38px] font-extrabold text-[#0B1422] leading-tight tracking-tight text-center max-w-2xl mx-auto">
           3 самые популярные модели падел кортов{" "}
@@ -103,7 +103,7 @@ export function TopSales() {
           <div className="flex flex-col gap-4">
             {/* Main image */}
             <div
-              className={`rounded-2xl overflow-hidden bg-linear-to-br ${THUMB_COLORS[activeThumb]} aspect-4/3 flex items-center justify-center`}
+              className={`rounded-2xl overflow-hidden bg-linear-to-br ${THUMB_COLORS[activeThumb]} aspect-4/3 max-h-[500px] flex items-center justify-center`}
             >
               <div className="flex flex-col items-center gap-2 text-white/20 select-none">
                 <svg className="w-16 h-16" fill="none" viewBox="0 0 64 64">

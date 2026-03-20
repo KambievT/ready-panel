@@ -34,7 +34,7 @@ export function Footer() {
 
       {/* CTA banner */}
       <div className="relative border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 lg:py-14">
+        <div className="mx-auto px-4 sm:px-6 lg:px-10 py-10 lg:py-14">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 lg:gap-10">
             <div className="flex-1">
               <h3 className="text-[22px] sm:text-[26px] lg:text-[30px] font-extrabold leading-tight tracking-tight">
@@ -69,7 +69,7 @@ export function Footer() {
       </div>
 
       {/* Main footer */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 lg:py-16">
+      <div className="relative mx-auto px-4 sm:px-6 lg:px-10 py-12 lg:py-16">
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6">
           {/* Logo + contacts */}
           <div className="flex flex-col gap-7 col-span-2 sm:col-span-2 lg:col-span-4">
@@ -202,7 +202,7 @@ export function Footer() {
 
       {/* Bottom bar */}
       <div className="relative border-t border-white/8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mx-auto px-4 sm:px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
             <p className="text-[13px] text-white/30">
               © 2025 Ready Padel. Все права защищены.

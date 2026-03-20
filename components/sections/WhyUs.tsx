@@ -41,7 +41,7 @@ const FEATURES = [
 export function WhyUs() {
   return (
     <section className="bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="mx-auto px-4 sm:px-6 lg:px-10">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
           {/* Left side */}
           <div className="flex-1 min-w-0">

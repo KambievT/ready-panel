@@ -83,10 +83,10 @@ export function Header() {
   return (
     <header className="bg-[#0B1422] text-white border-b border-white/5">
       {/* ── Desktop: Main bar ── */}
-      <div className="max-w-7xl mx-auto hidden lg:flex items-center gap-6 px-6 h-20">
+      <div className="mx-auto hidden lg:flex items-center gap-6 px-6 lg:px-10 h-20">
         {/* Logo */}
         <Link href="/" className="shrink-0 select-none">
-          <span className="text-[22px] font-extrabold italic tracking-tight">
+          <span className="text-[26px] font-extrabold italic tracking-tight">
             <span className="text-[#F5A41F]">READY</span>
             <span className="text-[#1B54B4]"> PADEL</span>
           </span>
@@ -95,7 +95,7 @@ export function Header() {
         <div className="flex-1" />
 
         {/* CTA Button */}
-        <Button className="bg-[#1B54B4] hover:bg-[#1648a0] active:bg-[#12408f] text-white font-semibold rounded-xl px-5 h-10 text-[13px] shrink-0 gap-2 shadow-none transition-colors duration-150">
+        <Button className="bg-[#1B54B4] hover:bg-[#1648a0] active:bg-[#12408f] text-white font-semibold rounded-xl px-5 h-10 text-[14px] shrink-0 gap-2 shadow-none transition-colors duration-150">
           <Download className="w-3.75 h-3.75 shrink-0" />
           Скачать каталог с ценами
         </Button>
@@ -103,7 +103,7 @@ export function Header() {
         {/* Callback Button */}
         <Button
           variant="outline"
-          className="border-[#1B54B4]/60 bg-transparent text-white hover:bg-[#1B54B4]/15 hover:text-white hover:border-[#1B54B4] rounded-xl h-10 px-4 text-[13px] shrink-0 shadow-none transition-colors duration-150"
+          className="border-[#1B54B4]/60 bg-transparent text-white hover:bg-[#1B54B4]/15 hover:text-white hover:border-[#1B54B4] rounded-xl h-10 px-4 text-[14px] shrink-0 shadow-none transition-colors duration-150"
         >
           Заказать звонок
         </Button>
@@ -111,11 +111,11 @@ export function Header() {
 
       {/* ── Desktop: Info bar ── */}
       <div className="hidden lg:block border-t border-white/5 bg-[#0B1422]">
-        <div className="max-w-7xl mx-auto flex items-center gap-6 px-6 h-10">
+        <div className="mx-auto flex items-center gap-6 px-6 lg:px-10 h-10">
           {/* Address */}
           <div className="flex items-center gap-2 shrink-0">
             <MapPin className="w-3.5 h-3.5 text-[#F5A41F] shrink-0" />
-            <span className="text-[12px] text-white/60">
+            <span className="text-[13px] text-white/60">
               г. Тольятти, ул. Коммунальная улица 20с7
             </span>
           </div>
@@ -124,7 +124,7 @@ export function Header() {
 
           {/* Messengers */}
           <div className="flex items-center gap-2.5 shrink-0">
-            <span className="text-[10px] text-white/40 uppercase tracking-widest">
+            <span className="text-[11px] text-white/40 uppercase tracking-widest">
               Онлайн
             </span>
             <div className="flex items-center gap-1.5">
@@ -147,10 +147,10 @@ export function Header() {
           {/* Phone */}
           <div className="flex items-center gap-2 shrink-0">
             <Phone className="w-3.5 h-3.5 text-[#F5A41F] shrink-0" />
-            <span className="text-[11px] text-white/50">Пн–Пт: 9:00–19:00</span>
+            <span className="text-[13px] text-white/50">Пн–Пт: 9:00–19:00</span>
             <a
               href="tel:+79180742375"
-              className="text-white font-bold text-[14px] tracking-wide hover:text-[#F5A41F] transition-colors duration-150"
+              className="text-white font-bold text-[16px] tracking-wide hover:text-[#F5A41F] transition-colors duration-150"
             >
               +7 (918) 074-23-75
             </a>
