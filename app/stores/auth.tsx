@@ -9,7 +9,11 @@ import {
   type ReactNode,
 } from "react";
 import { type User } from "firebase/auth";
-import { auth, signOutAdmin } from "@/lib/firebase-auth";
+import {
+  getAuthForToken,
+  onAuthChange,
+  signOutAdmin,
+} from "@/lib/firebase-auth";
 
 interface AuthState {
   isAuthenticated: boolean;
@@ -28,7 +32,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    return auth.onAuthStateChanged((u) => {
+    return onAuthChange((u) => {
       setUser(u);
       setIsLoading(false);
     });
@@ -42,7 +46,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const toggleEditMode = useCallback(() => setEditMode((v) => !v), []);
 
   const getToken = useCallback(
-    () => auth.currentUser?.getIdToken() ?? Promise.resolve(null),
+    () => getAuthForToken().currentUser?.getIdToken() ?? Promise.resolve(null),
     [],
   );
 
