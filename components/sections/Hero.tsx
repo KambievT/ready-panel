@@ -9,16 +9,18 @@ const FEATURES = [
 
 export function Hero() {
   return (
-    <section className="relative min-h-[40vh] lg:min-h-[60vh] bg-white overflow-hidden flex items-center">
-      {/* Subtle background grid */}
+    <section className="relative min-h-[40vh] lg:min-h-[60vh] overflow-hidden flex items-center">
+      {/* Background image */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage:
-            "linear-gradient(#1B54B4 1px, transparent 1px), linear-gradient(to right, #1B54B4 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
+          backgroundImage: "url('/fon.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       />
+      {/* Dark overlay */}
+      <div className="pointer-events-none absolute inset-0 bg-black/50" />
 
       {/* Accent gradient blob */}
       <Parallax
@@ -38,27 +40,27 @@ export function Hero() {
         {/* Content */}
         <div className="flex flex-col gap-6 lg:gap-8 max-w-3xl xl:max-w-7xl">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 w-fit bg-[#1B54B4]/8 border border-[#1B54B4]/20 text-[#1B54B4] rounded-full px-4 py-1.5 text-xs sm:text-sm xl:text-base font-medium">
+          <div className="inline-flex items-center gap-2 w-fit bg-white/10 border border-white/30 text-white rounded-full px-4 py-1.5 text-xs sm:text-sm xl:text-base font-medium">
             <span className="w-1.5 h-1.5 rounded-full bg-[#F5A41F] shrink-0" />
             Производитель · Прямые цены
           </div>
 
           {/* Headline */}
           <div>
-            <h1 className="text-[28px] sm:text-[36px] md:text-[44px] lg:text-[56px] xl:text-[66px] 2xl:text-[76px] font-extrabold leading-[1.1] tracking-tight text-[#0B1422]">
+            <h1 className="text-[28px] sm:text-[36px] md:text-[44px] lg:text-[56px] xl:text-[66px] 2xl:text-[76px] font-extrabold leading-[1.1] tracking-tight text-white">
               Производство, продажа и монтаж всех видов{" "}
-              <span className="text-[#1B54B4]">падел кортов</span>
+              <span className="text-[#7EABFF]">падел кортов</span>
             </h1>
-            <p className="mt-3 lg:mt-4 text-[24px] sm:text-[32px] md:text-[38px] lg:text-[46px] xl:text-[54px] 2xl:text-[60px] font-extrabold leading-none text-[#0B1422] tracking-tight">
+            <p className="mt-3 lg:mt-4 text-[24px] sm:text-[32px] md:text-[38px] lg:text-[46px] xl:text-[54px] 2xl:text-[60px] font-extrabold leading-none text-white tracking-tight">
               от <span className="text-[#F5A41F]">1 390 000 ₽*</span>
-              <span className="block text-[12px] sm:text-[13px] xl:text-[14px] font-normal text-[#4A5568] mt-1.5 tracking-normal">
+              <span className="block text-[12px] sm:text-[13px] xl:text-[14px] font-normal text-white/70 mt-1.5 tracking-normal">
                 * цена актуальна при заказе от 4 кортов
               </span>
             </p>
           </div>
 
           {/* Description */}
-          <p className="text-[#4A5568] text-base lg:text-lg xl:text-xl leading-relaxed max-w-135">
+          <p className="text-white/80 text-base lg:text-lg xl:text-xl leading-relaxed max-w-135">
             Цена падел корта от производителя ниже конкурентов на 20–30%.
             Строительство и монтаж под ключ по всей России.
           </p>
@@ -68,7 +70,7 @@ export function Hero() {
             {FEATURES.map((f) => (
               <li
                 key={f}
-                className="flex items-start sm:items-center gap-3 text-[14px] sm:text-[15px] xl:text-[16px] text-[#2D3748] font-medium"
+                className="flex items-start sm:items-center gap-3 text-[14px] sm:text-[15px] xl:text-[16px] text-white/90 font-medium"
               >
                 <span className="w-5 h-5 rounded-full bg-[#1B54B4] flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
                   <Check className="w-3 h-3 text-white stroke-3" />
@@ -86,7 +88,7 @@ export function Hero() {
             </Button>
             <Button
               variant="ghost"
-              className="text-[#1B54B4] hover:text-[#1648a0] hover:bg-[#1B54B4]/8 font-semibold border border-[#1B54B4] h-12 sm:h-13 xl:h-14 px-5 xl:px-6 text-[14px] sm:text-[15px] xl:text-[16px] rounded-xl"
+              className="text-white hover:text-white hover:bg-white/15 font-semibold border border-white/60 h-12 sm:h-13 xl:h-14 px-5 xl:px-6 text-[14px] sm:text-[15px] xl:text-[16px] rounded-xl"
             >
               Заказать звонок
             </Button>

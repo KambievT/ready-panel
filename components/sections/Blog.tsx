@@ -1,4 +1,9 @@
+"use client";
+
+import Image from "next/image";
 import { Animate } from "@/app/components/Animate";
+import { EditPhotoBtn } from "@/components/ui/EditPhotoBtn";
+import { usePhotos } from "@/hooks/usePhotos";
 
 const ARTICLES = [
   {
@@ -21,8 +26,10 @@ const ARTICLES = [
 ];
 
 export function Blog() {
+  const photos = usePhotos("blog");
   return (
-    <section className="bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+    <section className="relative bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+      <EditPhotoBtn section="blog" />
       <div className="mx-auto px-4 sm:px-6 lg:px-10">
         {/* Heading */}
         <h2 className="text-[26px] sm:text-[32px] lg:text-[40px] font-extrabold text-[#0B1422] tracking-tight text-center mb-8 lg:mb-12">
@@ -38,10 +45,20 @@ export function Blog() {
             <a
               key={article.id}
               href="#"
-              className="group relative rounded-2xl overflow-hidden aspect-4/3 max-h-[500px] flex flex-col justify-end cursor-pointer"
+              className="group relative rounded-2xl overflow-hidden aspect-4/3 max-h-125 flex flex-col justify-end cursor-pointer"
             >
-              {/* Photo placeholder */}
-              <div className={`absolute inset-0 ${article.bg}`} />
+              {/* Photo */}
+              {photos[ARTICLES.indexOf(article)]?.url ? (
+                <Image
+                  src={photos[ARTICLES.indexOf(article)].url}
+                  alt={article.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              ) : (
+                <div className={`absolute inset-0 ${article.bg}`} />
+              )}
 
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />

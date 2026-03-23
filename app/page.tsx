@@ -14,9 +14,57 @@ import { Contacts } from "@/components/sections/Contacts";
 import { Pricing } from "@/components/sections/Pricing";
 import { Animate } from "@/app/components/Animate";
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ready-padel.ru/#organization",
+      name: "Ready Padel",
+      url: "https://ready-padel.ru",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://ready-padel.ru/og-image.jpg",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        availableLanguage: "Russian",
+      },
+      sameAs: [],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://ready-padel.ru/#website",
+      url: "https://ready-padel.ru",
+      name: "Ready Padel",
+      publisher: { "@id": "https://ready-padel.ru/#organization" },
+      inLanguage: "ru-RU",
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://ready-padel.ru/#localbusiness",
+      name: "Ready Padel",
+      url: "https://ready-padel.ru",
+      description:
+        "Производство и монтаж падел-кортов под ключ в России. Профессиональные корты для падел-тенниса: открытые, закрытые, панорамные.",
+      priceRange: "$$",
+      image: "https://ready-padel.ru/og-image.jpg",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "RU",
+      },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Hero />
 
       <Animate animation="fade-up">

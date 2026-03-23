@@ -1,4 +1,9 @@
+"use client";
+
+import Image from "next/image";
 import { MapPin, Clock, Phone, Mail, ExternalLink } from "lucide-react";
+import { EditPhotoBtn } from "@/components/ui/EditPhotoBtn";
+import { usePhotos } from "@/hooks/usePhotos";
 
 const OFFICE_PHOTOS = [
   { bg: "bg-[#8D9B8A]" },
@@ -13,8 +18,12 @@ const SITE_PHOTOS = [
 ];
 
 export function Contacts() {
+  const photos = usePhotos("contacts");
+  const officePics = photos.slice(0, 3);
+  const sitePics = photos.slice(3, 6);
   return (
-    <section className="bg-gradient-to-b from-[#F7F9FC] to-white py-16 md:py-20 lg:py-24 border-b border-[#E2E8F0]">
+    <section className="relative bg-linear-to-b from-[#F7F9FC] to-white py-16 md:py-20 lg:py-24 border-b border-[#E2E8F0]">
+      <EditPhotoBtn section="contacts" />
       <div className="mx-auto px-4 sm:px-6 lg:px-10">
         {/* Section header */}
         <div className="text-center mb-12 lg:mb-16">
@@ -157,7 +166,7 @@ export function Contacts() {
 
           {/* Right column — map */}
           <div className="lg:col-span-3 flex flex-col gap-4">
-            <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-sm h-[340px] sm:h-[420px] lg:h-[520px]">
+            <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-sm h-85 sm:h-105 lg:h-130">
               <iframe
                 src="https://yandex.ru/map-widget/v1/?ll=37.576800%2C55.683600&z=10&pt=37.576800,55.683600,pm2rdm"
                 width="100%"
@@ -189,8 +198,18 @@ export function Contacts() {
                   {OFFICE_PHOTOS.map((photo, i) => (
                     <div
                       key={i}
-                      className={`rounded-lg ${photo.bg} hover:opacity-80 transition-opacity cursor-pointer`}
-                    />
+                      className={`rounded-lg overflow-hidden relative ${officePics[i] ? "" : photo.bg} hover:opacity-80 transition-opacity cursor-pointer`}
+                    >
+                      {officePics[i]?.url && (
+                        <Image
+                          src={officePics[i].url}
+                          alt=""
+                          fill
+                          className="object-cover"
+                          sizes="100px"
+                        />
+                      )}
+                    </div>
                   ))}
                 </div>
               </div>
@@ -204,8 +223,18 @@ export function Contacts() {
                   {SITE_PHOTOS.map((photo, i) => (
                     <div
                       key={i}
-                      className={`rounded-lg ${photo.bg} hover:opacity-80 transition-opacity cursor-pointer`}
-                    />
+                      className={`rounded-lg overflow-hidden relative ${sitePics[i] ? "" : photo.bg} hover:opacity-80 transition-opacity cursor-pointer`}
+                    >
+                      {sitePics[i]?.url && (
+                        <Image
+                          src={sitePics[i].url}
+                          alt=""
+                          fill
+                          className="object-cover"
+                          sizes="100px"
+                        />
+                      )}
+                    </div>
                   ))}
                 </div>
               </div>

@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Check, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { EditPhotoBtn } from "@/components/ui/EditPhotoBtn";
+import { usePhotos } from "@/hooks/usePhotos";
 
 type Court = {
   id: string;
@@ -65,11 +68,13 @@ const THUMB_COLORS = [
 export function TopSales() {
   const [activeId, setActiveId] = useState<string>("classic");
   const [activeThumb, setActiveThumb] = useState<number>(0);
+  const photos = usePhotos("top-sales");
 
   const court = COURTS.find((c) => c.id === activeId)!;
 
   return (
-    <section className="bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+    <section className="relative bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+      <EditPhotoBtn section="top-sales" />
       <div className="mx-auto px-4 sm:px-6 lg:px-10">
         {/* Heading */}
         <h2 className="text-[24px] sm:text-[30px] lg:text-[38px] font-extrabold text-[#0B1422] leading-tight tracking-tight text-center max-w-2xl mx-auto">
@@ -103,39 +108,53 @@ export function TopSales() {
           <div className="flex flex-col gap-4">
             {/* Main image */}
             <div
-              className={`rounded-2xl overflow-hidden bg-linear-to-br ${THUMB_COLORS[activeThumb]} aspect-4/3 max-h-[500px] flex items-center justify-center`}
+              className={`rounded-2xl overflow-hidden aspect-4/3 max-h-125 relative ${
+                photos[activeThumb]
+                  ? ""
+                  : `bg-linear-to-br ${THUMB_COLORS[activeThumb % THUMB_COLORS.length]} flex items-center justify-center`
+              }`}
             >
-              <div className="flex flex-col items-center gap-2 text-white/20 select-none">
-                <svg className="w-16 h-16" fill="none" viewBox="0 0 64 64">
-                  <rect
-                    width="64"
-                    height="64"
-                    rx="12"
-                    fill="white"
-                    fillOpacity=".05"
-                  />
-                  <path
-                    d="M12 44V26a3 3 0 0 1 3-3h34a3 3 0 0 1 3 3v18"
-                    stroke="white"
-                    strokeOpacity=".3"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <rect
-                    x="18"
-                    y="28"
-                    width="28"
-                    height="16"
-                    rx="2"
-                    stroke="white"
-                    strokeOpacity=".3"
-                    strokeWidth="2"
-                  />
-                </svg>
-                <span className="text-xs font-medium text-white/30 uppercase tracking-widest">
-                  Фото
-                </span>
-              </div>
+              {photos[activeThumb]?.url ? (
+                <Image
+                  src={photos[activeThumb].url}
+                  alt={court.label}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              ) : (
+                <div className="flex flex-col items-center gap-2 text-white/20 select-none">
+                  <svg className="w-16 h-16" fill="none" viewBox="0 0 64 64">
+                    <rect
+                      width="64"
+                      height="64"
+                      rx="12"
+                      fill="white"
+                      fillOpacity=".05"
+                    />
+                    <path
+                      d="M12 44V26a3 3 0 0 1 3-3h34a3 3 0 0 1 3 3v18"
+                      stroke="white"
+                      strokeOpacity=".3"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                    <rect
+                      x="18"
+                      y="28"
+                      width="28"
+                      height="16"
+                      rx="2"
+                      stroke="white"
+                      strokeOpacity=".3"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                  <span className="text-xs font-medium text-white/30 uppercase tracking-widest">
+                    Фото
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Thumbnails */}
@@ -144,12 +163,24 @@ export function TopSales() {
                 <button
                   key={i}
                   onClick={() => setActiveThumb(i)}
-                  className={`rounded-xl overflow-hidden aspect-4/3 bg-linear-to-br ${color} transition-all duration-150 cursor-pointer ${
+                  className={`rounded-xl overflow-hidden aspect-4/3 relative transition-all duration-150 cursor-pointer ${
+                    photos[i] ? "" : `bg-linear-to-br ${color}`
+                  } ${
                     activeThumb === i
                       ? "ring-2 ring-[#1B54B4] ring-offset-2"
                       : "opacity-60 hover:opacity-90"
                   }`}
-                />
+                >
+                  {photos[i]?.url && (
+                    <Image
+                      src={photos[i].url}
+                      alt=""
+                      fill
+                      className="object-cover"
+                      sizes="100px"
+                    />
+                  )}
+                </button>
               ))}
             </div>
           </div>

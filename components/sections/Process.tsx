@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import { EditPhotoBtn } from "@/components/ui/EditPhotoBtn";
+import { usePhotos } from "@/hooks/usePhotos";
 
 const STEPS = [
   {
@@ -57,9 +60,16 @@ const STEPS = [
 
 export function Process() {
   const [active, setActive] = useState(0);
+  const photos = usePhotos("process");
+  // 4 photos per step, indexed sequentially
+  const stepPhotos = STEPS[active].photos.map((ph, i) => ({
+    ...ph,
+    cloudUrl: photos[active * 4 + i]?.url,
+  }));
 
   return (
-    <section className="bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+    <section className="relative bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+      <EditPhotoBtn section="process" />
       <div className="mx-auto px-4 sm:px-6 lg:px-10">
         {/* Heading */}
         <h2 className="text-[24px] sm:text-[32px] lg:text-[40px] font-extrabold text-[#0B1422] tracking-tight text-center leading-tight mb-8 lg:mb-10">
@@ -87,14 +97,24 @@ export function Process() {
 
         {/* Photos grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-          {STEPS[active].photos.map((photo, i) => (
+          {stepPhotos.map((photo, i) => (
             <div
               key={i}
-              className={`rounded-2xl overflow-hidden aspect-video ${photo.bg} flex items-center justify-center`}
+              className={`rounded-2xl overflow-hidden aspect-video relative ${photo.cloudUrl ? "" : photo.bg + " flex items-center justify-center"}`}
             >
-              <span className="text-white/40 text-[12px] font-medium">
-                {photo.alt}
-              </span>
+              {photo.cloudUrl ? (
+                <Image
+                  src={photo.cloudUrl}
+                  alt={photo.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                />
+              ) : (
+                <span className="text-white/40 text-[12px] font-medium">
+                  {photo.alt}
+                </span>
+              )}
             </div>
           ))}
         </div>

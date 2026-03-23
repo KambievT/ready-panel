@@ -2,6 +2,7 @@
 
 import { useRef, useState, useCallback, useEffect } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { EditPhotoBtn } from "@/components/ui/EditPhotoBtn";
 
 const SERVICES = [
   {
@@ -72,7 +73,8 @@ export function Services() {
   };
 
   return (
-    <section className="bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+    <section className="relative bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+      <EditPhotoBtn section="services" />
       <div className="mx-auto px-4 sm:px-6 lg:px-10">
         {/* Header row */}
         <div className="flex items-end justify-between mb-8 lg:mb-12">

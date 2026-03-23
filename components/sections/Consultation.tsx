@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { Check, Phone } from "lucide-react";
+import Image from "next/image";
+import { EditPhotoBtn } from "@/components/ui/EditPhotoBtn";
+import { usePhotos } from "@/hooks/usePhotos";
 
 const BENEFITS = [
   "выслушаем и вникнем в суть вашей задачи",
@@ -13,13 +16,15 @@ const BENEFITS = [
 export function Consultation() {
   const [phone, setPhone] = useState("");
   const [agreed, setAgreed] = useState(false);
+  const photos = usePhotos("consultation");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
 
   return (
-    <section className="bg-[#D1D5DB] py-0 overflow-hidden border-b border-[#C0C4CC]">
+    <section className="relative bg-[#D1D5DB] py-0 overflow-hidden border-b border-[#C0C4CC]">
+      <EditPhotoBtn section="consultation" />
       <div className="mx-auto px-4 sm:px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-0 items-end lg:min-h-105">
           {/* Left — text */}
@@ -81,8 +86,18 @@ export function Consultation() {
           <div className="hidden lg:flex flex-col items-center justify-end self-end px-10">
             <div className="relative">
               {/* Photo */}
-              <div className="w-52 h-72 bg-[#9CA3AF] rounded-t-full flex items-end justify-center overflow-hidden">
-                <div className="w-full h-full bg-linear-to-b from-[#B0B8C4] to-[#8A929E]" />
+              <div className="w-52 h-72 rounded-t-full overflow-hidden bg-[#9CA3AF] relative">
+                {photos[0]?.url ? (
+                  <Image
+                    src={photos[0].url}
+                    alt="Специалист"
+                    fill
+                    className="object-cover object-top"
+                    sizes="208px"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-linear-to-b from-[#B0B8C4] to-[#8A929E]" />
+                )}
               </div>
               {/* Name badge */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white rounded-xl px-4 py-2 text-center shadow-md whitespace-nowrap">

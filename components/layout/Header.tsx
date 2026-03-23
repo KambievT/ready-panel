@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
-import { MapPin, Download, Phone } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { MapPin, Download, Phone, LogOut, PencilLine } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/app/stores/auth";
 
 const SOCIAL_LINKS = [
   {
@@ -51,9 +53,23 @@ const NAV_LINKS = [
 ];
 
 export function Header() {
+  const { isAuthenticated, editMode, logout, toggleEditMode } = useAuth();
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Shift+Alt+A → login page
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.shiftKey && e.altKey && e.code === "KeyA") {
+        e.preventDefault();
+        router.push("/login");
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [router]);
 
   const openMenu = useCallback(() => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -107,6 +123,32 @@ export function Header() {
         >
           Заказать звонок
         </Button>
+
+        {/* Admin controls — only visible when authenticated */}
+        {isAuthenticated && (
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              onClick={toggleEditMode}
+              title={
+                editMode ? "Выключить редактирование" : "Режим редактирования"
+              }
+              className={`w-9 h-9 rounded-xl flex items-center justify-center transition-colors duration-150 ${
+                editMode
+                  ? "bg-[#F5A41F]/20 text-[#F5A41F] hover:bg-[#F5A41F]/30"
+                  : "bg-white/5 text-white/40 hover:bg-white/10 hover:text-white"
+              }`}
+            >
+              <PencilLine className="w-4 h-4" />
+            </button>
+            <button
+              onClick={logout}
+              title="Выйти"
+              className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:bg-red-500/15 hover:text-red-400 transition-colors duration-150"
+            >
+              <LogOut className="w-4 h-4" />
+            </button>
+          </div>
+        )}
       </div>
 
       {/* ── Desktop: Info bar ── */}
@@ -371,6 +413,36 @@ export function Header() {
                 >
                   Заказать звонок
                 </Button>
+
+                {/* Admin controls — only visible when authenticated */}
+                {isAuthenticated && (
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => {
+                        toggleEditMode();
+                        closeMenu();
+                      }}
+                      className={`flex-1 flex items-center justify-center gap-2 h-12 rounded-xl text-[14px] font-semibold transition-colors duration-150 ${
+                        editMode
+                          ? "bg-[#F5A41F]/20 text-[#F5A41F]"
+                          : "bg-white/5 text-white/60 hover:bg-white/10"
+                      }`}
+                    >
+                      <PencilLine className="w-4 h-4" />
+                      {editMode ? "Ред. включено" : "Редактировать"}
+                    </button>
+                    <button
+                      onClick={() => {
+                        logout();
+                        closeMenu();
+                      }}
+                      className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400 hover:bg-red-500/20 transition-colors duration-150"
+                      aria-label="Выйти"
+                    >
+                      <LogOut className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
