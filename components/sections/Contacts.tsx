@@ -31,7 +31,7 @@ export function Contacts() {
             <MapPin className="w-3.5 h-3.5" />
             Свяжитесь с нами
           </div>
-          <h2 className="text-[28px] sm:text-[34px] lg:text-[40px] font-extrabold text-[#0B1422] leading-tight tracking-tight">
+          <h2 className="text-[30px] sm:text-[40px] lg:text-[50px] font-extrabold text-[#0B1422] leading-[1.1] tracking-tight">
             Наши контакты
           </h2>
           <p className="text-[15px] text-[#5A6A85] mt-3 max-w-lg mx-auto">

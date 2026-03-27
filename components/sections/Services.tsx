@@ -78,7 +78,7 @@ export function Services() {
       <div className="mx-auto px-4 sm:px-6 lg:px-10">
         {/* Header row */}
         <div className="flex items-end justify-between mb-8 lg:mb-12">
-          <h2 className="text-[26px] sm:text-[32px] lg:text-[40px] font-extrabold text-[#0B1422] tracking-tight">
+          <h2 className="text-[30px] sm:text-[40px] lg:text-[50px] font-extrabold text-[#0B1422] tracking-tight leading-[1.1]">
             Наши дополнительные услуги:
           </h2>
 
@@ -121,7 +121,8 @@ export function Services() {
               </h3>
 
               {/* CTA button */}
-              <button className="relative flex items-center gap-2 bg-[#1B54B4] hover:bg-[#1648a0] active:bg-[#12408f] text-white font-semibold text-[14px] rounded-xl px-5 h-11 w-fit transition-colors duration-150 cursor-pointer shadow-lg">
+              <button className="group relative overflow-hidden flex items-center gap-2 bg-[#1B54B4] hover:bg-[#1648a0] active:translate-y-0 active:bg-[#12408f] text-white font-semibold text-[14px] rounded-xl px-5 h-11 w-fit transition-all duration-200 ease-out cursor-pointer shadow-lg hover:shadow-[0_6px_24px_rgba(27,84,180,0.35)] hover:-translate-y-0.5">
+                <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 ease-in-out bg-linear-to-r from-transparent via-white/20 to-transparent" />
                 Оставить заявку
                 <ArrowRight className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-0.5" />
               </button>

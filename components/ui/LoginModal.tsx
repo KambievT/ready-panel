@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, type FormEvent } from "react";
+import { createPortal } from "react-dom";
 import { X, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { login as firebaseSignIn } from "@/app/services/api";
@@ -54,7 +55,7 @@ export function LoginModal({ open, onClose }: LoginModalProps) {
 
   if (!open) return null;
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-200 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
@@ -125,6 +126,7 @@ export function LoginModal({ open, onClose }: LoginModalProps) {
           </Button>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

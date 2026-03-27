@@ -30,7 +30,7 @@ export function Consultation() {
           {/* Left — text */}
           <div className="py-10 lg:py-14 flex flex-col gap-5 sm:gap-6 justify-center">
             <div>
-              <h2 className="text-[26px] sm:text-[30px] lg:text-[36px] font-extrabold text-[#0B1422] leading-tight tracking-tight">
+              <h2 className="text-[30px] sm:text-[40px] lg:text-[50px] font-extrabold text-[#0B1422] leading-[1.1] tracking-tight">
                 Получите бесплатную консультацию нашего лучшего специалиста
               </h2>
               <p className="text-[15px] text-[#3D4F6A] mt-3">
@@ -136,8 +136,9 @@ export function Consultation() {
               />
               <button
                 type="submit"
-                className="w-full h-12 rounded-xl bg-[#2ECC71] hover:bg-[#27AE60] active:bg-[#219150] text-white font-bold text-[15px] transition-colors cursor-pointer"
+                className="group relative overflow-hidden w-full h-12 rounded-xl bg-[#2ECC71] hover:bg-[#27AE60] active:bg-[#219150] active:translate-y-0 text-white font-bold text-[15px] transition-all duration-200 ease-out cursor-pointer hover:-translate-y-0.5 hover:shadow-[0_6px_24px_rgba(46,204,113,0.35)]"
               >
+                <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 ease-in-out bg-linear-to-r from-transparent via-white/20 to-transparent" />
                 Получить консультацию
               </button>
               <label className="flex items-start gap-2 cursor-pointer">

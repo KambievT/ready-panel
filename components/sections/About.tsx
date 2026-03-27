@@ -14,7 +14,7 @@ export function About() {
     <section className="bg-[#F8FAFC] py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-6 sm:gap-8">
         {/* Heading */}
-        <h2 className="text-[24px] sm:text-[28px] font-extrabold text-[#0B1422] tracking-tight">
+        <h2 className="text-[30px] sm:text-[40px] lg:text-[50px] font-extrabold text-[#0B1422] tracking-tight leading-[1.1]">
           О компании «Ready Padel»
         </h2>
 

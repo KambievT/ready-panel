@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { SideWidget } from "@/components/ui/SideWidget";
 import { AuthProvider } from "@/app/stores/auth";
 
 const inter = Inter({
@@ -92,6 +93,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <SideWidget />
         </AuthProvider>
       </body>
     </html>

@@ -2,37 +2,35 @@
 
 import Image from "next/image";
 import { Animate } from "@/app/components/Animate";
-import { EditPhotoBtn } from "@/components/ui/EditPhotoBtn";
-import { usePhotos } from "@/hooks/usePhotos";
 
-const ARTICLES = [
+const FALLBACK_ARTICLES = [
   {
     id: "cost",
-    bg: "bg-[#6B7F6E]",
     title: "Сколько стоит падел корт в 2026 году: разбор структуры стоимости",
+    imageUrl: "",
   },
   {
     id: "location",
-    bg: "bg-[#4A6741]",
     title:
       "Как выбрать место для падел корта: требования к площадке и окружению",
+    imageUrl: "",
   },
   {
     id: "vs-tennis",
-    bg: "bg-[#3A5F5A]",
     title:
       "Падел-теннис и большой теннис: в чем разница и почему все больше выбирают падел",
+    imageUrl: "",
   },
 ];
 
+const BG_COLORS = ["bg-[#6B7F6E]", "bg-[#4A6741]", "bg-[#3A5F5A]"];
+
 export function Blog() {
-  const photos = usePhotos("blog");
   return (
     <section className="relative bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
-      <EditPhotoBtn section="blog" />
       <div className="mx-auto px-4 sm:px-6 lg:px-10">
         {/* Heading */}
-        <h2 className="text-[26px] sm:text-[32px] lg:text-[40px] font-extrabold text-[#0B1422] tracking-tight text-center mb-8 lg:mb-12">
+        <h2 className="text-[30px] sm:text-[40px] lg:text-[50px] font-extrabold text-[#0B1422] tracking-tight text-center leading-[1.1] mb-8 lg:mb-12">
           Полезные статьи и новости
         </h2>
 
@@ -41,23 +39,25 @@ export function Blog() {
           animation="stagger"
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
-          {ARTICLES.map((article) => (
+          {FALLBACK_ARTICLES.map((article, i) => (
             <a
               key={article.id}
               href="#"
               className="group relative rounded-2xl overflow-hidden aspect-4/3 max-h-125 flex flex-col justify-end cursor-pointer"
             >
-              {/* Photo */}
-              {photos[ARTICLES.indexOf(article)]?.url ? (
+              {/* Photo or fallback color */}
+              {article.imageUrl ? (
                 <Image
-                  src={photos[ARTICLES.indexOf(article)].url}
+                  src={article.imageUrl}
                   alt={article.title}
                   fill
                   className="object-cover"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               ) : (
-                <div className={`absolute inset-0 ${article.bg}`} />
+                <div
+                  className={`absolute inset-0 ${BG_COLORS[i % BG_COLORS.length]}`}
+                />
               )}
 
               {/* Gradient overlay */}

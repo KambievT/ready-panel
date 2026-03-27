@@ -63,7 +63,7 @@ export function Pricing() {
             <p className="text-[12px] font-semibold uppercase tracking-widest text-[#1B54B4] mb-2">
               Стоимость услуг
             </p>
-            <h2 className="text-[26px] sm:text-[32px] lg:text-[38px] font-extrabold text-[#0B1422] tracking-tight leading-tight">
+            <h2 className="text-[30px] sm:text-[40px] lg:text-[50px] font-extrabold text-[#0B1422] tracking-tight leading-[1.1]">
               Монтаж корта{" "}
               <span className="text-[#718096] font-medium text-[20px] sm:text-[24px] lg:text-[28px]">
                 (на подготовленный фундамент)

@@ -334,3 +334,38 @@
     scroll-behavior: auto;
   }
 }
+
+/* ── Button shine + glow effects ────────────────── */
+[data-slot="button"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+  transform: translateX(-110%);
+  transition: transform 0.5s ease-in-out;
+  pointer-events: none;
+  border-radius: inherit;
+}
+[data-slot="button"]:not(:disabled):hover::after {
+  transform: translateX(110%);
+}
+[data-slot="button"][data-variant="default"]:not(:disabled):hover {
+  box-shadow: 0 6px 24px rgba(27, 84, 180, 0.35);
+}
+
+/* ── Side widget slide-in ────────────────────────── */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

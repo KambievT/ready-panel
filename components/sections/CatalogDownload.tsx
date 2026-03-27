@@ -28,7 +28,7 @@ export function CatalogDownload() {
       <div className="relative mx-auto px-4 sm:px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         {/* Left */}
         <div className="flex flex-col gap-8">
-          <h2 className="text-[26px] sm:text-[34px] lg:text-[44px] font-extrabold text-[#0B1422] leading-[1.1] tracking-tight">
+          <h2 className="text-[30px] sm:text-[40px] lg:text-[52px] font-extrabold text-[#0B1422] leading-[1.1] tracking-tight">
             Скачайте полный{" "}
             <span className="text-[#1B54B4]">прайс-каталог</span> с ценами и
             характеристиками

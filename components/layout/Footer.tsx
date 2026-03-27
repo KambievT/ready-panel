@@ -205,7 +205,7 @@ export function Footer() {
         <div className="mx-auto px-4 sm:px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
             <p className="text-[13px] text-white/30">
-              © 2025 Ready Padel. Все права защищены.
+              © 2026 Ready Padel. Все права защищены.
             </p>
             <span className="hidden sm:inline text-white/15">|</span>
             <Link

@@ -72,7 +72,7 @@ export function Process() {
       <EditPhotoBtn section="process" />
       <div className="mx-auto px-4 sm:px-6 lg:px-10">
         {/* Heading */}
-        <h2 className="text-[24px] sm:text-[32px] lg:text-[40px] font-extrabold text-[#0B1422] tracking-tight text-center leading-tight mb-8 lg:mb-10">
+        <h2 className="text-[30px] sm:text-[40px] lg:text-[50px] font-extrabold text-[#0B1422] tracking-tight text-center leading-[1.1] mb-8 lg:mb-12">
           Посмотрите как происходит процесс
           <br className="hidden sm:block" />
           установки кортов от начала и до конца

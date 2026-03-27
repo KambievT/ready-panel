@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Check, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Check, Download, Phone } from "lucide-react";
 import { EditPhotoBtn } from "@/components/ui/EditPhotoBtn";
 import { usePhotos } from "@/hooks/usePhotos";
 
@@ -77,7 +76,7 @@ export function TopSales() {
       <EditPhotoBtn section="top-sales" />
       <div className="mx-auto px-4 sm:px-6 lg:px-10">
         {/* Heading */}
-        <h2 className="text-[24px] sm:text-[30px] lg:text-[38px] font-extrabold text-[#0B1422] leading-tight tracking-tight text-center max-w-2xl mx-auto">
+        <h2 className="text-[30px] sm:text-[40px] lg:text-[50px] font-extrabold text-[#0B1422] leading-[1.1] tracking-tight text-center max-w-3xl mx-auto">
           3 самые популярные модели падел кортов{" "}
           <span className="text-[#1B54B4]">в наличии на складе</span> в Москве
         </h2>
@@ -189,7 +188,7 @@ export function TopSales() {
           <div className="flex flex-col">
             {/* Title + badge */}
             <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-              <h3 className="text-[22px] sm:text-[26px] lg:text-[28px] font-extrabold text-[#0B1422] tracking-tight">
+              <h3 className="text-[22px] sm:text-[26px] lg:text-[44px] font-extrabold text-[#0B1422] tracking-tight">
                 {court.label}
               </h3>
               {court.inStock ? (
@@ -224,7 +223,7 @@ export function TopSales() {
               <span className="text-[14px] sm:text-[15px] text-[#718096]">
                 Цена от:
               </span>
-              <span className="text-[28px] sm:text-[34px] lg:text-[40px] font-extrabold text-[#0B1422] tracking-tight leading-none">
+              <span className="text-[28px] sm:text-[34px] lg:text-[55px] font-extrabold text-[#0B1422] tracking-tight leading-none">
                 {court.price}
               </span>
               <span className="text-[16px] sm:text-[18px] lg:text-[20px] font-semibold text-[#4A5568]">
@@ -233,17 +232,29 @@ export function TopSales() {
             </div>
 
             {/* CTAs */}
-            <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-              <Button className="bg-[#1B54B4] hover:bg-[#1648a0] text-white font-bold rounded-xl h-12 px-7 text-[14px] shadow-none gap-2 transition-colors duration-150">
-                Заказать корт
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button
-                variant="outline"
-                className="border-[#CBD5E0] text-[#4A5568] hover:border-[#1B54B4] hover:text-[#1B54B4] hover:bg-[#1B54B4]/5 rounded-xl h-12 px-6 text-[14px] shadow-none transition-colors duration-150"
+            <div className="mt-6 flex flex-col sm:flex-row items-stretch gap-3 sm:gap-4">
+              <a
+                href="#"
+                className="flex-1 flex items-center justify-center gap-3 bg-[#1B54B4] hover:bg-[#1648a0] text-white font-bold rounded-2xl h-16 sm:h-18 px-6 text-[15px] sm:text-[16px] transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_6px_24px_rgba(27,84,180,0.35)]"
               >
-                Скачать каталог
-              </Button>
+                <Download className="w-5 h-5 shrink-0" />
+                <span className="leading-tight text-center">
+                  Скачать
+                  <br />
+                  прайс
+                </span>
+              </a>
+              <a
+                href="tel:+79180742375"
+                className="flex-1 flex items-center justify-center gap-3 bg-[#1B54B4] hover:bg-[#1648a0] text-white font-bold rounded-2xl h-16 sm:h-18 px-6 text-[15px] sm:text-[16px] transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_6px_24px_rgba(27,84,180,0.35)]"
+              >
+                <Phone className="w-5 h-5 shrink-0" />
+                <span className="leading-tight text-center">
+                  Вызвать инженера
+                  <br />
+                  на замер бесплатно
+                </span>
+              </a>
             </div>
           </div>
         </div>

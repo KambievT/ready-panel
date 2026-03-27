@@ -46,7 +46,7 @@ export function WhyUs() {
           {/* Left side */}
           <div className="flex-1 min-w-0">
             {/* Heading */}
-            <h2 className="text-[26px] sm:text-[30px] lg:text-[36px] font-extrabold text-[#0B1422] leading-tight tracking-tight mb-8 lg:mb-10">
+            <h2 className="text-[30px] sm:text-[40px] lg:text-[50px] font-extrabold text-[#0B1422] leading-[1.1] tracking-tight mb-8 lg:mb-12">
               Вы можете нам довериться и быть спокойными за качество и сроки
               установки падел-кортов
             </h2>

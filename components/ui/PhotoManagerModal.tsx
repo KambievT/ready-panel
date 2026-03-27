@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { X, Trash2, Upload, Loader2, ImageOff } from "lucide-react";
 import { useAuth } from "@/app/stores/auth";
 import {
@@ -92,7 +93,7 @@ export function PhotoManagerModal({ section, open, onClose }: Props) {
 
   if (!open) return null;
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-200 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
@@ -192,6 +193,7 @@ export function PhotoManagerModal({ section, open, onClose }: Props) {
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

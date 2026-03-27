@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
 import { Parallax } from "@/app/components/Animate";
 
@@ -82,16 +81,20 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
-            <Button className="bg-[#1B54B4] hover:bg-[#1648a0] text-white font-bold rounded-xl h-12 sm:h-13 xl:h-14 px-6 sm:px-7 xl:px-8 text-[14px] sm:text-[15px] xl:text-[16px] shadow-none gap-2 transition-colors duration-150 animate-pulse-glow">
+            {/* Primary: shine sweep + lift on hover */}
+            <button className="group relative overflow-hidden bg-[#1B54B4] text-white font-bold rounded-xl h-12 sm:h-13 xl:h-14 px-6 sm:px-7 xl:px-8 text-[14px] sm:text-[15px] xl:text-[16px] flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(27,84,180,0.4)] hover:shadow-[0_8px_32px_rgba(27,84,180,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 ease-out animate-pulse-glow">
+              {/* Shine sweep */}
+              <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-500 ease-in-out bg-linear-to-r from-transparent via-white/20 to-transparent" />
               Скачать каталог с ценами
-              <ArrowRight className="w-4 h-4 xl:w-5 xl:h-5" />
-            </Button>
-            <Button
-              variant="ghost"
-              className="text-white hover:text-white hover:bg-white/15 font-semibold border border-white/60 h-12 sm:h-13 xl:h-14 px-5 xl:px-6 text-[14px] sm:text-[15px] xl:text-[16px] rounded-xl"
-            >
+              <ArrowRight className="w-4 h-4 xl:w-5 xl:h-5 transition-transform duration-200 group-hover:translate-x-1" />
+            </button>
+
+            {/* Secondary: fill + border glow on hover */}
+            <button className="group relative overflow-hidden text-white font-semibold border border-white/50 hover:border-white/90 h-12 sm:h-13 xl:h-14 px-5 xl:px-6 text-[14px] sm:text-[15px] xl:text-[16px] rounded-xl flex items-center justify-center gap-2 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 ease-out shadow-none hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]">
+              {/* Background fill sweep */}
+              <span className="pointer-events-none absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-200" />
               Заказать звонок
-            </Button>
+            </button>
           </div>
         </div>
       </div>
