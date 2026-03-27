@@ -112,10 +112,6 @@ export default function Home() {
       </Animate>
 
       <Animate animation="fade-up" threshold={0.05}>
-        <SeoText />
-      </Animate>
-
-      <Animate animation="fade-up" threshold={0.05}>
         <Contacts />
       </Animate>
     </>
