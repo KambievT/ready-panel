@@ -1,120 +1,62 @@
-"use client";
-
-import { useState } from "react";
-import Image from "next/image";
-import { EditPhotoBtn } from "@/components/ui/EditPhotoBtn";
-import { usePhotos } from "@/hooks/usePhotos";
+﻿"use client";
 
 const STEPS = [
   {
-    id: "prep",
-    label: "Подготовительный этап",
-    photos: [
-      { alt: "Подготовка площадки 1", bg: "bg-[#B0BEC5]" },
-      { alt: "Подготовка площадки 2", bg: "bg-[#90A4AE]" },
-      { alt: "Подготовка площадки 3", bg: "bg-[#78909C]" },
-      { alt: "Подготовка площадки 4", bg: "bg-[#607D8B]" },
-    ],
+    num: 1,
+    title: "Консультация и проект",
+    desc: "Мы анализируем ваш запрос, подбираем оптимальную конструкцию и создаём индивидуальный проект.",
   },
   {
-    id: "foundation",
-    label: "Установка фундамента",
-    photos: [
-      { alt: "Фундамент 1", bg: "bg-[#A5D6A7]" },
-      { alt: "Фундамент 2", bg: "bg-[#81C784]" },
-      { alt: "Фундамент 3", bg: "bg-[#66BB6A]" },
-      { alt: "Фундамент 4", bg: "bg-[#4CAF50]" },
-    ],
+    num: 2,
+    title: "Производство и логистика",
+    desc: "Изготавливаем сертифицированные конструкции, доставляем всё на объект.",
   },
   {
-    id: "fencing",
-    label: "Установка ограждений",
-    photos: [
-      { alt: "Ограждения 1", bg: "bg-[#90CAF9]" },
-      { alt: "Ограждения 2", bg: "bg-[#64B5F6]" },
-      { alt: "Ограждения 3", bg: "bg-[#42A5F5]" },
-      { alt: "Ограждения 4", bg: "bg-[#2196F3]" },
-    ],
+    num: 3,
+    title: "Подготовка площадки",
+    desc: "Готовим основание, проверяем геометрию и обеспечиваем идеальные условия для установки.",
   },
   {
-    id: "coating",
-    label: "Монтаж покрытия",
-    photos: [
-      { alt: "Покрытие 1", bg: "bg-[#FFCC80]" },
-      { alt: "Покрытие 2", bg: "bg-[#FFA726]" },
-      { alt: "Покрытие 3", bg: "bg-[#FB8C00]" },
-      { alt: "Покрытие 4", bg: "bg-[#E65100]" },
-    ],
+    num: 4,
+    title: "Монтаж корта",
+    desc: "Сборка конструкции, установка стеклянных панелей, освещения и покрытия — быстро, безопасно, по стандартам.",
   },
   {
-    id: "sand",
-    label: "Засыпка песком и проверка работы",
-    photos: [
-      { alt: "Засыпка 1", bg: "bg-[#CE93D8]" },
-      { alt: "Засыпка 2", bg: "bg-[#BA68C8]" },
-      { alt: "Засыпка 3", bg: "bg-[#AB47BC]" },
-      { alt: "Засыпка 4", bg: "bg-[#9C27B0]" },
-    ],
+    num: 5,
+    title: "Финальная проверка и сдача",
+    desc: "Проводим тестирование, настраиваем освещение, проверяем безопасность и сдаём готовый объект в эксплуатацию.",
   },
 ];
 
 export function Process() {
-  const [active, setActive] = useState(0);
-  const photos = usePhotos("process");
-  // 4 photos per step, indexed sequentially
-  const stepPhotos = STEPS[active].photos.map((ph, i) => ({
-    ...ph,
-    cloudUrl: photos[active * 4 + i]?.url,
-  }));
-
   return (
-    <section className="relative bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
-      <EditPhotoBtn section="process" />
-      <div className="mx-auto px-4 sm:px-6 lg:px-10">
-        {/* Heading */}
-        <h2 className="text-[30px] sm:text-[40px] lg:text-[50px] font-extrabold text-[#0B1422] tracking-tight text-center leading-[1.1] mb-8 lg:mb-12">
-          Посмотрите как происходит процесс
-          <br className="hidden sm:block" />
-          установки кортов от начала и до конца
+    <section className="bg-[#0B1422] py-16 md:py-24 lg:py-32">
+      <div className="mx-auto px-4 sm:px-6 lg:px-10 xl:px-20 max-w-7xl">
+        <h2 className="text-[36px] sm:text-[52px] lg:text-[68px] font-extrabold text-white uppercase leading-[1.05] tracking-tight mb-4">
+          От идеи до первой игры —
+          <br />
+          всё под контролем
         </h2>
 
-        {/* Step tabs */}
-        <div className="flex items-center gap-2 flex-wrap mb-6 lg:mb-8 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 sm:overflow-visible">
-          {STEPS.map((step, i) => (
-            <button
-              key={step.id}
-              onClick={() => setActive(i)}
-              className={`px-3 sm:px-4 py-2 rounded-full text-[13px] sm:text-[14px] font-semibold border transition-colors duration-150 cursor-pointer whitespace-nowrap ${
-                i === active
-                  ? "bg-[#00BCD4] text-white border-[#00BCD4]"
-                  : "bg-white text-[#5A6A85] border-[#C8D6E5] hover:border-[#00BCD4] hover:text-[#00BCD4]"
-              }`}
-            >
-              {step.label}
-            </button>
-          ))}
-        </div>
+        <p className="text-[40px] text-[#F5A41F] font-medium mb-12 lg:mb-18">
+          Как это работает?
+        </p>
 
-        {/* Photos grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-          {stepPhotos.map((photo, i) => (
+        <div className="divide-y divide-white/10">
+          {STEPS.map((step) => (
             <div
-              key={i}
-              className={`rounded-2xl overflow-hidden aspect-video relative ${photo.cloudUrl ? "" : photo.bg + " flex items-center justify-center"}`}
+              key={step.num}
+              className="grid grid-cols-[3rem_1fr_2fr] lg:grid-cols-[5rem_1fr_2fr] items-start gap-4 lg:gap-8 py-8 lg:py-10"
             >
-              {photo.cloudUrl ? (
-                <Image
-                  src={photo.cloudUrl}
-                  alt={photo.alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 50vw, 25vw"
-                />
-              ) : (
-                <span className="text-white/40 text-[12px] font-medium">
-                  {photo.alt}
-                </span>
-              )}
+              <span className="text-[32px] lg:text-[42px] font-extrabold text-[#1B54B4] leading-none pt-0.5">
+                {step.num}
+              </span>
+              <p className="text-[17px] sm:text-[19px] lg:text-[22px] font-semibold text-white leading-snug">
+                {step.title}
+              </p>
+              <p className="text-[14px] sm:text-[16px] text-white/55 leading-relaxed">
+                {step.desc}
+              </p>
             </div>
           ))}
         </div>

@@ -23,40 +23,51 @@ export function Consultation() {
   };
 
   return (
-    <section className="relative bg-[#D1D5DB] py-0 overflow-hidden border-b border-[#C0C4CC]">
+    <section className="relative bg-[#0B1422] py-10 overflow-hidden border-b border-[#C0C4CC]">
+      {/* Background image */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: "url('/fon.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      {/* Dark overlay */}
+      <div className="pointer-events-none absolute inset-0 bg-black/60" />
+
       <EditPhotoBtn section="consultation" />
-      <div className="mx-auto px-4 sm:px-6 lg:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-0 items-end lg:min-h-105">
+      <div className="relative mx-auto px-4 sm:px-6 lg:px-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-0 items-end lg:min-h-140">
           {/* Left — text */}
-          <div className="py-10 lg:py-14 flex flex-col gap-5 sm:gap-6 justify-center">
+          <div className="py-14 lg:py-20 flex flex-col gap-6 sm:gap-8 justify-center">
             <div>
-              <h2 className="text-[30px] sm:text-[40px] lg:text-[50px] font-extrabold text-[#0B1422] leading-[1.1] tracking-tight">
+              <h2 className="text-[30px] sm:text-[40px] lg:text-[50px] font-extrabold text-white leading-[1.1] tracking-tight">
                 Получите бесплатную консультацию нашего лучшего специалиста
               </h2>
-              <p className="text-[15px] text-[#3D4F6A] mt-3">
+              <p className="text-[15px] text-white/60 mt-3">
                 по телефону через несколько минут
               </p>
             </div>
 
             <div className="flex flex-col gap-1">
-              <p className="text-[13px] text-[#5A6A85]">
+              <p className="text-[13px] text-white/50">
                 Звоните Пн-Сб с 9:00-19:00
               </p>
               <a
                 href="tel:+79180742375"
-                className="flex items-center gap-2 text-[22px] font-extrabold text-[#0B1422] hover:text-[#1B54B4] transition-colors"
+                className="flex items-center gap-2 text-[22px] font-extrabold text-white hover:text-[#7EABFF] transition-colors"
               >
                 <Phone className="w-5 h-5 text-[#2ECC71] fill-[#2ECC71]" />
-                +7 (918) 074-23-75
+                +7 (937) 215-92-90
               </a>
             </div>
 
             <div className="flex flex-col gap-1">
-              <p className="text-[13px] text-[#5A6A85]">
+              <p className="text-[13px] text-white/50">
                 Пишите, мы всегда онлайн
               </p>
               <div className="flex items-center gap-3 mt-1">
-                {/* Telegram */}
                 <a
                   href="https://t.me/"
                   target="_blank"
@@ -67,7 +78,6 @@ export function Consultation() {
                     <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
                   </svg>
                 </a>
-                {/* WhatsApp */}
                 <a
                   href="https://wa.me/"
                   target="_blank"
@@ -82,11 +92,9 @@ export function Consultation() {
             </div>
           </div>
 
-          {/* Center — specialist photo placeholder */}
           <div className="hidden lg:flex flex-col items-center justify-end self-end px-10">
             <div className="relative">
-              {/* Photo */}
-              <div className="w-52 h-72 rounded-t-full overflow-hidden bg-[#9CA3AF] relative">
+              <div className="w-60 h-80 rounded-t-full overflow-hidden bg-[#9CA3AF] relative">
                 {photos[0]?.url ? (
                   <Image
                     src={photos[0].url}
@@ -96,7 +104,7 @@ export function Consultation() {
                     sizes="208px"
                   />
                 ) : (
-                  <div className="w-full h-full bg-linear-to-b from-[#B0B8C4] to-[#8A929E]" />
+                  <div className="w-full h-full bg-gradient-to-b from-[#B0B8C4] to-[#8A929E]" />
                 )}
               </div>
               {/* Name badge */}
@@ -109,16 +117,16 @@ export function Consultation() {
           </div>
 
           {/* Right — form */}
-          <div className="py-10 lg:py-14 flex flex-col gap-5 sm:gap-6 justify-center">
+          <div className="py-14 lg:py-20 flex flex-col gap-6 sm:gap-8 justify-center">
             <div>
-              <h3 className="text-[22px] sm:text-[26px] lg:text-[28px] font-extrabold text-[#0B1422] leading-tight">
+              <h3 className="text-[22px] sm:text-[26px] lg:text-[28px] font-extrabold text-white leading-tight">
                 Заполните форму, свяжусь с вами
               </h3>
               <ul className="mt-4 flex flex-col gap-2">
                 {BENEFITS.map((b, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-[#2ECC71] shrink-0 mt-0.5" />
-                    <span className="text-[13px] text-[#3D4F6A] leading-snug">
+                    <span className="text-[13px] text-white/60 leading-snug">
                       {b}
                     </span>
                   </li>
@@ -132,7 +140,7 @@ export function Consultation() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="Ваш номер телефона"
-                className="w-full h-12 rounded-xl border border-[#E2E8F0] bg-white px-4 text-[15px] text-[#0B1422] placeholder:text-[#9DABBE] outline-none focus:border-[#1B54B4] transition-colors"
+                className="w-full h-12 rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm px-4 text-[15px] text-white placeholder:text-white/40 outline-none focus:border-[#2ECC71] transition-colors"
               />
               <button
                 type="submit"
@@ -148,7 +156,7 @@ export function Consultation() {
                   onChange={(e) => setAgreed(e.target.checked)}
                   className="mt-0.5 accent-[#2ECC71]"
                 />
-                <span className="text-[11px] text-[#9DABBE] leading-snug">
+                <span className="text-[11px] text-white/40 leading-snug">
                   Согласен с условиями политики конфиденциальности данных
                 </span>
               </label>

@@ -14,17 +14,17 @@ const NAV_LINKS = [
 
 export function Navbar() {
   return (
-    <nav className="hidden lg:block bg-[#F7F8FA] border-b border-[#E2E8F0]">
+    <nav className="hidden lg:block bg-[#0B1422]/90 border-b border-white/10">
       <div className="mx-auto px-6 lg:px-10">
         <ul className="flex items-center gap-0">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="relative block px-4 py-3.5 text-[13px] font-semibold uppercase tracking-[0.08em] text-[#4A5568] hover:text-[#1B54B4] transition-colors duration-150 group"
+                className="relative block px-4 py-3.5 text-[13px] font-semibold uppercase tracking-[0.08em] text-white/70 hover:text-white transition-colors duration-150 group"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-[#1B54B4] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left rounded-full" />
+                <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left rounded-full" />
               </Link>
             </li>
           ))}

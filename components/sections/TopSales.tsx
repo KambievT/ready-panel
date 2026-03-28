@@ -16,19 +16,6 @@ type Court = {
 
 const COURTS: Court[] = [
   {
-    id: "classic",
-    label: "Классический корт",
-    price: "1 390 000",
-    inStock: true,
-    specs: [
-      "Стойки: высококачественная сталь, горячее цинкование. Профильная стальная труба толщиной 3 мм;",
-      "Стальная сетка: рамка 1×2 м, высококачественная горячая оцинкованная квадратная стальная труба толщиной 3 мм. Диаметр проволоки — 4 мм, размер ячейки — 50×50 мм;",
-      "Стекло: закалённое 12 мм, размер 2×3 м, толщина 12 мм, соответствует европейскому стандарту EN12150-2;",
-      "Покрытие: цвет — на выбор, высота ворса — от 10 мм, плотность — от 46 200 стежков/м², волокно — от 9500D, шаг — 3/16″, основание на выбор: полипропилен, полиэстер, полиуретан, латекс;",
-      "Освещение: Z-образная стойка, 8 прожекторов LED по 200 Вт; освещённость — 300 люкс; влагозащита — IP65;",
-    ],
-  },
-  {
     id: "panoramic",
     label: "Панорамный корт",
     price: "1 690 000",
@@ -65,7 +52,7 @@ const THUMB_COLORS = [
 ];
 
 export function TopSales() {
-  const [activeId, setActiveId] = useState<string>("classic");
+  const [activeId, setActiveId] = useState<string>("panoramic");
   const [activeThumb, setActiveThumb] = useState<number>(0);
   const photos = usePhotos("top-sales");
 
@@ -77,7 +64,7 @@ export function TopSales() {
       <div className="mx-auto px-4 sm:px-6 lg:px-10">
         {/* Heading */}
         <h2 className="text-[30px] sm:text-[40px] lg:text-[50px] font-extrabold text-[#0B1422] leading-[1.1] tracking-tight text-center max-w-3xl mx-auto">
-          3 самые популярные модели падел кортов{" "}
+          2 самые популярные модели падел кортов{" "}
           <span className="text-[#1B54B4]">в наличии на складе</span> в Москве
         </h2>
 

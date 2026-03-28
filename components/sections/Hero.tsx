@@ -38,31 +38,13 @@ export function Hero() {
       <div className="relative mx-auto px-4 sm:px-6 lg:px-10 xl:px-20 2xl:px-32 w-full py-12 md:py-16 lg:py-24 xl:py-28">
         {/* Content */}
         <div className="flex flex-col gap-6 lg:gap-8 max-w-3xl xl:max-w-7xl">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 w-fit bg-white/10 border border-white/30 text-white rounded-full px-4 py-1.5 text-xs sm:text-sm xl:text-base font-medium">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F5A41F] shrink-0" />
-            Производитель · Прямые цены
-          </div>
-
           {/* Headline */}
           <div>
             <h1 className="text-[28px] sm:text-[36px] md:text-[44px] lg:text-[56px] xl:text-[66px] 2xl:text-[76px] font-extrabold leading-[1.1] tracking-tight text-white">
               Производство, продажа и монтаж всех видов{" "}
               <span className="text-[#7EABFF]">падел кортов</span>
             </h1>
-            <p className="mt-3 lg:mt-4 text-[24px] sm:text-[32px] md:text-[38px] lg:text-[46px] xl:text-[54px] 2xl:text-[60px] font-extrabold leading-none text-white tracking-tight">
-              от <span className="text-[#F5A41F]">1 390 000 ₽*</span>
-              <span className="block text-[12px] sm:text-[13px] xl:text-[14px] font-normal text-white/70 mt-1.5 tracking-normal">
-                * цена актуальна при заказе от 4 кортов
-              </span>
-            </p>
           </div>
-
-          {/* Description */}
-          <p className="text-white/80 text-base lg:text-lg xl:text-xl leading-relaxed max-w-135">
-            Цена падел корта от производителя ниже конкурентов на 20–30%.
-            Строительство и монтаж под ключ по всей России.
-          </p>
 
           {/* Feature list */}
           <ul className="flex flex-col gap-3">

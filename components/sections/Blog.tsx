@@ -27,10 +27,10 @@ const BG_COLORS = ["bg-[#6B7F6E]", "bg-[#4A6741]", "bg-[#3A5F5A]"];
 
 export function Blog() {
   return (
-    <section className="relative bg-white py-12 md:py-16 lg:py-20 border-b border-[#E2E8F0]">
+    <section className="relative bg-white py-16 md:py-24 lg:py-32 border-b border-[#E2E8F0]">
       <div className="mx-auto px-4 sm:px-6 lg:px-10">
         {/* Heading */}
-        <h2 className="text-[30px] sm:text-[40px] lg:text-[50px] font-extrabold text-[#0B1422] tracking-tight text-center leading-[1.1] mb-8 lg:mb-12">
+        <h2 className="text-[30px] sm:text-[40px] lg:text-[50px] font-extrabold text-[#0B1422] tracking-tight text-center leading-[1.1] mb-10 lg:mb-16">
           Полезные статьи и новости
         </h2>
 
@@ -43,7 +43,7 @@ export function Blog() {
             <a
               key={article.id}
               href="#"
-              className="group relative rounded-2xl overflow-hidden aspect-4/3 max-h-125 flex flex-col justify-end cursor-pointer"
+              className="group relative rounded-2xl overflow-hidden aspect-3/4 max-h-[550px] flex flex-col justify-end cursor-pointer"
             >
               {/* Photo or fallback color */}
               {article.imageUrl ? (

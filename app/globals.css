@@ -273,6 +273,17 @@
   transition: transform 0.1s linear;
 }
 
+/* CTA button pulse animation */
+@keyframes ctaPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 164, 31, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(245, 164, 31, 0);
+  }
+}
+
 /* Subtle float animation for decorative elements */
 @keyframes float {
   0%,

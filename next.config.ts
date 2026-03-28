@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "res.cloudinary.com",
       },
+      {
+        protocol: "https",
+        hostname: "tse2.mm.bing.net",
+      },
     ],
   },
   serverExternalPackages: [],
