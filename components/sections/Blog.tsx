@@ -28,7 +28,7 @@ const BG_COLORS = ["bg-[#6B7F6E]", "bg-[#4A6741]", "bg-[#3A5F5A]"];
 export function Blog() {
   return (
     <section className="relative bg-white py-16 md:py-24 lg:py-32 border-b border-[#E2E8F0]">
-      <div className="mx-auto px-4 sm:px-6 lg:px-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         {/* Heading */}
         <h2 className="text-[30px] sm:text-[40px] lg:text-[50px] font-extrabold text-[#0B1422] tracking-tight text-center leading-[1.1] mb-10 lg:mb-16">
           Полезные статьи и новости

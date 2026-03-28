@@ -31,7 +31,7 @@ const STEPS = [
 export function Process() {
   return (
     <section className="bg-[#0B1422] py-16 md:py-24 lg:py-32">
-      <div className="mx-auto px-4 sm:px-6 lg:px-10 xl:px-20 max-w-7xl">
+      <div className="mx-auto px-4 sm:px-6 lg:px-10 xl:px-20 ">
         <h2 className="text-[36px] sm:text-[52px] lg:text-[68px] font-extrabold text-white uppercase leading-[1.05] tracking-tight mb-4">
           От идеи до первой игры —
           <br />
