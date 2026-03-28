@@ -39,18 +39,10 @@ export function Footer() {
           <div className="flex flex-col gap-7 col-span-2 sm:col-span-2 lg:col-span-4">
             {/* Logo */}
             <Link href="/" className="shrink-0 select-none">
-              <div className="inline-flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl px-4 py-3 hover:bg-white/8 transition-colors">
-                <div className="w-9 h-9 rounded-lg bg-[#1B54B4] flex items-center justify-center shrink-0">
-                  <span className="text-white font-extrabold text-[14px] leading-none">
-                    RP
-                  </span>
-                </div>
-                <span className="text-[20px] font-extrabold italic tracking-tight leading-none">
-                  <span className="text-[#F5A41F]">READY</span>
-                  <br />
-                  <span className="text-[#2ECC71]">PADEL</span>
-                </span>
-              </div>
+              <span className="text-[32px] font-extrabold italic tracking-tight">
+                <span className="text-[#F5A41F]">READY</span>
+                <span className="text-[#1B54B4]"> PADEL</span>
+              </span>
             </Link>
 
             {/* Contact details */}
